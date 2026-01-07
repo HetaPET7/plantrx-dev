@@ -51,7 +51,12 @@ function HeroBanner() {
               onMouseMove={handleMouseMove}
               onMouseLeave={() => setActiveZone(null)}
             >
-              <div className="flex flex-col items-center relative z-20">
+              <motion.div
+              variants={textContainerVariants as any}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="flex flex-col items-center relative z-20">
                 <motion.h1 
                 variants={slideUpVariants as any}
                 initial="hidden"
@@ -78,7 +83,7 @@ function HeroBanner() {
                     Real results.
                   </motion.p>
                 </motion.div>
-              </div>
+              </motion.div>
 
               <div className="absolute inset-0 z-20">
                 <div
