@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'GT-super-medium';
+  src: url('/fonts/GT-Super-Display-Medium-Trial.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Color */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-primary: #059669;
+  --color-secondary: #f59e0b;
+  --color-cream: #fffeef;
+
+  /* font-family */
+  --font-body: "DM Sans", sans-serif;
+  --font-heading: "GT-super-medium"; 
+  --font-heading-geist: "Geist", sans-serif; 
+
+  /* font-size */
+  --text-25: 25px;
+  --text-32: 32px; 
+  --text-40: 40px;
+  --text-60: 60px;
+  --text-70: 70px;
+
+  --shadow-black: 0px 5px 10px 0px #0000001a;
+  /* lineheight */
+  --spacing-100p: 100%;
+
+  /* Custom neccessary Breakpoints */
+  --breakpoint-mdscreen: 990px;
+  --breakpoint-mdscreen1: 768px;
+  --breakpoint-extlarge_desktop: 1920px;
+  --breakpoint-extlarge_desktop1: 2000px;
+}
+@layer base {
+  ::before,
+  ::after {
+    @apply box-border;
+  }
+  html,
+  body {
+    @apply scroll-smooth!;
+  }
+  body {
+    @apply p-0 m-0 2xl:text-2xl font-body 2xl:leading-[32px] lg:text-xl lg:leading-7 text-base leading-6 font-normal text-black antialiased bg-cream tracking-normal;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply m-0 outline-0 font-heading text-black;
+  }
+}
+.container {
+  @apply 2xl:px-25 xl:px-[55px] md:px-6 px-5 max-w-full mx-auto;
+}
+.navigation-panel .nav-item {
+  @apply lg:text-lg lg:leading-7 text-base leading-6 text-primary font-medium;
+} 
+.link-paddle {
+  @apply relative inline-block overflow-hidden h-6;
+} 
+.link-paddle-top,
+.link-paddle-bottom {
+  @apply block transition-transform duration-300 will-change-transform
+           ease-[cubic-bezier(.4,0,.2,1)];
+}
+.link-paddle-bottom {
+  @apply absolute left-0 top-full;
+}
+.link-paddle-item:hover .link-paddle-top {
+  @apply -translate-y-full;
+}
+.link-paddle-item:hover .link-paddle-bottom {
+  @apply -translate-y-full;
+}
