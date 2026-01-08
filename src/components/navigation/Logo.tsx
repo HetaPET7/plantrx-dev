@@ -31,9 +31,9 @@ function Logo({
       const isR = letters[index] === "R";
 
       return {
-        y: fromTop ? -120 : 120,
+        y: isR ? 0 : fromTop ? -120 : 120,
         scale: 1,
-        opacity: isR ? 1 : 0,
+        opacity: 0,
       };
     },
     visible: {

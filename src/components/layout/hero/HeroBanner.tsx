@@ -77,10 +77,7 @@ function HeroBanner() {
                     Expert natural remedies that work.
                   </motion.p>
                   <motion.p variants={slideUpVariants as any}>
-                    No chemicals. No side effects.
-                  </motion.p>
-                  <motion.p variants={slideUpVariants as any}>
-                    Real results.
+                    No chemicals. No side effects. Real results.
                   </motion.p>
                 </motion.div>
               </motion.div>
