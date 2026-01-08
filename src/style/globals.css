@@ -1,9 +1,30 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'GT-super-medium';
-  src: url('/fonts/GT-Super-Display-Medium-Trial.woff') format('woff');
-  font-weight: 500;
+  font-family: 'outfit-bold';
+  src: url('/fonts/Outfit-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'outfit-semibold';
+  src: url('/fonts/Outfit-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'switzer-light';
+  src: url('/fonts/Switzer-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'switzer-regular';
+  src: url('/fonts/Switzer-Regular.woff') format('woff');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -17,9 +38,8 @@
   --color-cream: #fffeef;
 
   /* font-family */
-  --font-body: "DM Sans", sans-serif;
-  --font-heading: "GT-super-medium"; 
-  --font-heading-geist: "Geist", sans-serif; 
+  --font-body: "switzer-regular", sans-serif;
+  --font-heading: "outfit-semibold", sans-serif; 
 
   /* font-size */
   --text-25: 25px;
@@ -48,7 +68,7 @@
     @apply scroll-smooth!;
   }
   body {
-    @apply p-0 m-0 2xl:text-2xl font-body 2xl:leading-[32px] lg:text-xl lg:leading-7 text-base leading-6 font-normal text-black antialiased bg-cream tracking-normal;
+    @apply p-0 m-0 lg:text-lg text-base leading-6 font-normal font-body text-black antialiased bg-cream tracking-normal;
     -webkit-font-smoothing: antialiased;
   }
   h1,
@@ -60,15 +80,18 @@
     @apply m-0 outline-0 font-heading text-black;
   }
 }
+p {
+  @apply lg:text-lg text-base leading-6 font-normal antialiased tracking-normal font-body;
+}
 .container {
   @apply 2xl:px-25 xl:px-[55px] md:px-6 px-5 max-w-full mx-auto;
 }
 .navigation-panel .nav-item {
-  @apply lg:text-lg lg:leading-7 text-base leading-6 text-primary font-medium;
+  @apply lg:text-lg text-base leading-6 text-primary font-medium;
 } 
 .link-paddle {
   @apply relative inline-block overflow-hidden h-6;
-} 
+}  
 .link-paddle-top,
 .link-paddle-bottom {
   @apply block transition-transform duration-300 will-change-transform

@@ -62,7 +62,7 @@ function HeroBanner() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                className="font-heading text-[6vw] leading-[8vw] text-center text-primary">
+                className="font-heading md:text-[6vw] text-[9vw] leading-[8vw] text-center text-primary">
                   Welcome To <span> Plant<span className="text-secondary">R</span>x</span>
                 </motion.h1>
 
@@ -71,7 +71,7 @@ function HeroBanner() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
-                  className="text-center mt-5 text-primary"
+                  className="text-center mt-5 text-primary font-body"
                 >
                   <motion.p variants={slideUpVariants as any}>
                     Expert natural remedies that work.
@@ -151,7 +151,7 @@ function HeroBanner() {
             onClick={scrollToNext}
             className="scroll-discover-link absolute bottom-5 cursor-pointer z-30"
           >
-            <p className="scroll-link text-primary uppercase xl:text-lg xl:font-medium link-paddle-item font-medium">
+            <p className="scroll-link text-primary uppercase text-base link-paddle-item">
               <span className="link-paddle">
                 <span className="link-paddle-top">Scroll to discover</span>
                 <span className="link-paddle-bottom">Scroll to discover</span>
