@@ -48,6 +48,7 @@ function HeroBanner() {
         <div className="relative h-full flex flex-col justify-center items-center">
           <Parallax distance={200} className='h-full w-full flex items-center justify-center'>
             <div
+            className='container'
               onMouseMove={handleMouseMove}
               onMouseLeave={() => setActiveZone(null)}
             >
@@ -62,7 +63,7 @@ function HeroBanner() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                className="font-heading md:text-[6vw] text-[9vw] leading-[8vw] text-center text-primary">
+                className="font-heading md:text-[7vw] text-[9vw] leading-[8vw] text-center text-primary">
                   Welcome To <span> Plant<span className="text-secondary">R</span>x</span>
                 </motion.h1>
 
@@ -71,7 +72,7 @@ function HeroBanner() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
-                  className="text-center mt-5 text-primary font-body"
+                  className="text-center mt-6 text-primary font-body"
                 >
                   <motion.p variants={slideUpVariants as any}>
                     Expert natural remedies that work.
@@ -103,14 +104,14 @@ function HeroBanner() {
                   }
                   transition={{ duration: 0.4, ease: 'easeOut' }}
                   style={{ x: imageX, y: imageY }}
-                  className="absolute left-30 top-[10%]"
+                  className="absolute xl:left-30 md:left-20 left-10 xl:top-[10%] md:top-[4%] top-[15%]"
                 >
-                  <div className='h-[28vw] w-full aspect-3/4'>
+                  <div className='xl:h-[28vw] md:h-[45vw] h-[50vw] w-full aspect-3/4'>
                     <Image
                       src="/hero-hover-1.jpg"
                       alt="hero hover left"
                       width={1000}
-                      height={1000}
+                      height={1000} 
                       priority
                       className="w-full h-full object-cover"
                     />
@@ -126,9 +127,9 @@ function HeroBanner() {
                   }
                   transition={{ duration: 0.4, ease: 'easeOut' }}
                   style={{ x: imageX, y: imageY }}
-                  className="absolute right-30 -bottom-[5%]"
+                  className="absolute xl:right-30 md:right-20 right-7 xl:-bottom-[5%] bottom-20"
                 >
-                  <div className="h-[28vw] w-full aspect-3/4">
+                  <div className="xl:h-[28vw] md:h-[45vw] h-[50vw] w-full aspect-3/4">
                     <Image
                       src="/hero-hover-2.jpg"
                       alt="hero hover right"

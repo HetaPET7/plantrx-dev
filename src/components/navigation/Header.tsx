@@ -5,6 +5,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { slideDownVariants } from "@/animations/framerMotionVariants";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { useIsTablet } from "@/hooks/useIsTablet";
 
 interface HeaderProps {
     onLoadingComplete?: () => void;
@@ -12,6 +13,14 @@ interface HeaderProps {
 
 function Header({ onLoadingComplete }: HeaderProps) {
     const isMobile = useIsMobile(768);
+    const isSmallDesk = useIsTablet(768, 1440);
+    const loadingScale = isMobile
+        ? 1
+        : isSmallDesk
+            ? 1.8
+            : 3
+
+
     const [animationStage, setAnimationStage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [lockLogoAnimation, setLockLogoAnimation] = useState(false);
@@ -38,22 +47,22 @@ function Header({ onLoadingComplete }: HeaderProps) {
 
     useEffect(() => {
         if (!logoSlotRef.current || animationStage !== 5) return;
-      
+
         const measure = () => {
-          const rect = logoSlotRef.current!.getBoundingClientRect();
-      
-          setLogoTarget({
-            x: rect.left + rect.width / 2,
-            y: isMobile ? 18 : 28 + rect.height / 2, 
-          });
+            const rect = logoSlotRef.current!.getBoundingClientRect();
+
+            setLogoTarget({
+                x: rect.left + rect.width / 2,
+                y: isMobile ? 18 : 28 + rect.height / 2,
+            });
         };
-      
+
         measure();
         window.addEventListener("resize", measure);
         return () => window.removeEventListener("resize", measure);
-      }, [animationStage]);
-      
-      
+    }, [animationStage]);
+
+
 
     return (
         <>
@@ -100,9 +109,9 @@ function Header({ onLoadingComplete }: HeaderProps) {
 
             <motion.div
                 initial={{
-                    x: "48vw",
+                    x: "44vw",
                     y: "48vh",
-                    scale: 4,
+                    scale: loadingScale
                 }}
                 animate={
                     logoTarget
@@ -113,27 +122,27 @@ function Header({ onLoadingComplete }: HeaderProps) {
                         }
                         : undefined
                 }
-                transition={{   
+                transition={{
                     duration: 1,
                     ease: [0.76, 0, 0.24, 1],
                 }}
                 onAnimationComplete={() => {
-                    setLockLogoAnimation(true); 
+                    setLockLogoAnimation(true);
                 }}
                 style={{
                     position: "fixed",
                     transform: "translate(-50%, -50%)",
-                    zIndex: 99999
+                    transformOrigin: "center center",
+                    zIndex: 99999,
                 }}
-                className="flex items-center justify-center"
-            >   
-            <motion.div>
+            >
                 <Logo
                     isLink={!isLoading}
                     animationStage={lockLogoAnimation ? undefined : animationStage}
+                    size={isMobile ? "sm" : isSmallDesk ? "md" : "lg"}
                 />
-            </motion.div>
-            </motion.div>
+            </motion.div >
+
 
         </>
     );

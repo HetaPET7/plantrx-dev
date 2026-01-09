@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import HeroBanner from "@/components/layout/hero/HeroBanner";
 import Header from "@/components/navigation/Header";
+import ImageGridSection from '@/components/ImageGridSection';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,6 +17,7 @@ export default function Home() {
       
       <div >
         <HeroBanner />
+        <ImageGridSection />
         <div className="h-screen"></div>
         <div className="h-screen"></div>
         <div className="h-screen" id="next-section"></div>

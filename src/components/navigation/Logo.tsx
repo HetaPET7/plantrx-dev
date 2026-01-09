@@ -2,19 +2,26 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 interface LogoProps {
-  isLink?: boolean;
-  className?: string;
-  animationStage?: number;
-}
+    isLink?: boolean;
+    className?: string;
+    animationStage?: number;
+    size?: "sm" | "md" | "lg";
+  }  
 
 const letters = ["P", "l", "a", "n", "t", "R", "x"];
+const sizeMap = {
+    sm: "text-[32px]",
+    md: "text-[40px]",
+    lg: "text-[48px]",
+};  
 
 function Logo({
-  isLink = true,
-  className = "md:text-40 text-32",
-  animationStage,
-}: LogoProps) {
-  const shouldAnimate = animationStage !== undefined;
+    isLink = true,
+    animationStage,
+    size = "lg",
+  }: LogoProps) {
+    const shouldAnimate = animationStage !== undefined;
+    const fontSizeClass = sizeMap[size];
 
   const containerVariants = {
     hidden: {},
@@ -48,8 +55,8 @@ function Logo({
   };
 
   const logoContent = (
-    <motion.h1
-      className={`logo-heading ${className} font-bold text-primary leading-none whitespace-nowrap`}
+<motion.h1
+      className={`logo-heading ${fontSizeClass} font-bold text-primary leading-none whitespace-nowrap`}
       variants={containerVariants}
       initial={shouldAnimate ? "hidden" : false}
       animate={shouldAnimate ? "visible" : false}
@@ -57,26 +64,26 @@ function Logo({
       {letters.map((letter, index) => {
         const isR = letter === "R";
 
-        if (!shouldAnimate) {
-          return (
-            <span
-              key={index}
-              className={`md:text-40 text-32 inline-block ${isR ? "text-secondary" : ""}`}
-            >
-              {letter}
-            </span>
-          );
-        }
-
-        return (
+        return shouldAnimate ? (
           <motion.span
             key={index}
             custom={index}
             variants={letterVariants as any}
-            className={`md:text-40 text-32 inline-block ${isR ? "text-secondary" : ""}`}
+            className={`inline-block ${fontSizeClass} ${
+              isR ? "text-secondary" : ""
+            }`}
           >
             {letter}
           </motion.span>
+        ) : (
+          <span
+            key={index}
+            className={`inline-block ${fontSizeClass} ${
+              isR ? "text-secondary" : ""
+            }`}
+          >
+            {letter}
+          </span>
         );
       })}
     </motion.h1>
