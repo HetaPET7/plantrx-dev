@@ -31,17 +31,29 @@ export default function RevealText({
     [text]
   )
 
-  const MotionTag: React.ElementType = (motion as any)[tag] || motion.div
+  const MotionTag = ((motion as any)[tag] || motion.div) as React.ComponentType<{
+    children?: React.ReactNode;
+    variants?: any;
+    initial?: any;
+    whileInView?: any;
+    viewport?: any;
+    className?: string;
+    style?: React.CSSProperties;
+  }>
 
   return (
     <span style={{ perspective: '1200px' }}>
       <MotionTag
-        variants={wordContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ amount: 0.4 }}
-        className={className}
-        style={{ transformStyle: 'preserve-3d' }} 
+        {...(tag !== 'svg'
+          ? {
+              variants: wordContainer,
+              initial: 'hidden',
+              whileInView: 'visible',
+              viewport: { amount: 0.4 },
+              className,
+              style: { transformStyle: 'preserve-3d' },
+            }
+          : { className, style: { transformStyle: 'preserve-3d' } })}
       >
         {words.map((word, i) => (
           <span
