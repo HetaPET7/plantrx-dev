@@ -13,7 +13,7 @@ interface HeaderProps {
 
 function Header({ onLoadingComplete }: HeaderProps) {
     const isMobile = useIsMobile(768);
-    const isSmallDesk = useIsTablet(768, 1440);
+    const isSmallDesk = useIsTablet(768, 1440); 
     const loadingScale = isMobile
         ? 1
         : isSmallDesk
@@ -53,7 +53,7 @@ function Header({ onLoadingComplete }: HeaderProps) {
 
             setLogoTarget({
                 x: rect.left + rect.width / 2,
-                y: isMobile ? 18 : 28 + rect.height / 2,
+                y: isMobile ? 18 : 40 + rect.height / 2,
             });
         };
 
@@ -74,7 +74,7 @@ function Header({ onLoadingComplete }: HeaderProps) {
                 style={{ pointerEvents: isLoading ? "auto" : "none" }}
             />
 
-            <header className="site-header md:py-7 py-5 container fixed top-0 z-99999 w-full ">
+            <header className="site-header md:py-10 py-5 container fixed top-0 z-99999 w-full ">
                 <div className="flex items-center justify-between gap-5 md:min-h-10 min-h-8">
                     <div ref={logoSlotRef} className="logo-wrapper relative h-fit" />
 

@@ -1,5 +1,29 @@
 'use client'
-import { motion } from 'framer-motion';
+import { Variants } from 'framer-motion'
+
+export const wordContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+    },
+  },
+}
+
+export const wordRisePerspective: Variants = {
+  hidden: {
+    y: '120%',
+    rotateX: 25,
+  },
+  visible: {
+    y: '0%',
+    rotateX: 0,
+    transition: {
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
 
 export const textContainerVariants = {
   hidden: {},

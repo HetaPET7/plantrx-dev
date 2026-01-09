@@ -8,10 +8,14 @@ import {
   slideUpVariants,
   textContainerVariants,
 } from '@/animations/framerMotionVariants';
+import RevealText from '@/utils/RevealText';
+import Link from 'next/link';
+import { useIsTablet } from '@/hooks/useIsTablet';
 
 type HoverZone = 'left' | 'right' | null;
 
 function HeroBanner() {
+  const isTablet = useIsTablet(0, 1025)
   const scrollToNext = () => {
     const target = document.getElementById('next-section');
     if (!target) return;
@@ -41,49 +45,39 @@ function HeroBanner() {
     mouseX.set(x);
     mouseY.set(y);
   };
+  const Tag = isTablet ? 'div' : Parallax;
 
   return (
     <section className="hero-banner-section relative overflow-hidden">
-      <div className="h-screen w-full py-10">
-        <div className="relative h-full flex flex-col justify-center items-center">
-          <Parallax distance={200} className='h-full w-full flex items-center justify-center'>
+      <div className="relative min-[1025px]:h-dvh min-[768px]:h-[75dvh] h-[85dvh] w-full md:mb-30 mb-10">
+        <div className="h-full flex flex-col justify-center items-center">
+
+          <Tag {...(isTablet ? {} : { distance: 200 })} className='h-full w-full flex items-center justify-center'>
             <div
             className='container'
               onMouseMove={handleMouseMove}
               onMouseLeave={() => setActiveZone(null)}
             >
               <motion.div
-              variants={textContainerVariants as any}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
               className="flex flex-col items-center relative z-20">
-                <motion.h1 
-                variants={slideUpVariants as any}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                className="font-heading md:text-[7vw] text-[9vw] leading-[8vw] text-center text-primary">
+                <h1
+                className="font-heading md:text-[7vw] md:leading-[10vw] text-[13vw] leading-[15vw] text-center text-primary">
                   Welcome To <span> Plant<span className="text-secondary">R</span>x</span>
-                </motion.h1>
+                </h1>
 
-                <motion.div
-                  variants={textContainerVariants as any}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  className="text-center mt-6 text-primary font-body"
+                <motion.div 
+                  className="text-center md:mt-6 mt-4 text-primary font-body"
                 >
-                  <motion.p variants={slideUpVariants as any}>
+                  <RevealText tag='p'>
                     Expert natural remedies that work.
-                  </motion.p>
-                  <motion.p variants={slideUpVariants as any}>
+                  </RevealText>
+                  <RevealText tag='p'>
                     No chemicals. No side effects. Real results.
-                  </motion.p>
+                  </RevealText>
                 </motion.div>
               </motion.div>
 
-              <div className="absolute inset-0 z-20">
+              {/* <div className="absolute inset-0 z-20">
                 <div
                   className="absolute left-0 top-0 h-full w-1/2"
                   onMouseEnter={() => setActiveZone('left')}
@@ -140,22 +134,23 @@ function HeroBanner() {
                     />
                   </div>
                 </motion.div>
-              </div>
+              </div> */}
 
             </div>
-          </Parallax>
-
-          <motion.div
-            onClick={scrollToNext}
-            className="scroll-discover-link absolute bottom-5 cursor-pointer z-30"
-          >
-            <p className="scroll-link text-primary uppercase text-base link-paddle-item">
-              <span className="link-paddle">
-                <span className="link-paddle-top">Scroll to discover</span>
-                <span className="link-paddle-bottom">Scroll to discover</span>
-              </span>
-            </p>
-          </motion.div>
+          </Tag>
+          <div className='absolute bottom-5 flex justify-center w-full left-0 z-10 container'>
+            <motion.div
+              onClick={scrollToNext}
+              className="scroll-discover-link cursor-pointer z-30"
+            >
+              <p className="scroll-link text-primary uppercase text-base link-paddle-item *:tracking-normal">
+                <span className="link-paddle">
+                  <span className="link-paddle-top">Scroll to discover</span>
+                  <span className="link-paddle-bottom">Scroll to discover</span>
+                </span>
+              </p>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

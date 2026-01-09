@@ -36,6 +36,7 @@
   --color-primary: #059669;
   --color-secondary: #f59e0b;
   --color-cream: #fffeef;
+  --color-green-500: #0BD294;
 
   /* font-family */
   --font-body: "switzer-regular", sans-serif;
@@ -68,7 +69,7 @@
     @apply scroll-smooth!;
   }
   body {
-    @apply p-0 m-0 lg:text-lg text-base leading-6 font-normal font-body text-black antialiased bg-cream tracking-[0.03em];
+    @apply p-0 m-0 lg:text-lg lg:leading-6 text-base leading-5 font-normal font-body text-black antialiased bg-cream tracking-[0.03em];
     -webkit-font-smoothing: antialiased;
   }
   h1,
@@ -84,7 +85,10 @@
   @apply mdscreen:text-4xl mdscreen:leading-[44px] text-2xl leading-8;
 } */
 p { 
-  @apply lg:text-lg text-base leading-6 font-normal antialiased font-body tracking-[0.07em];
+  @apply lg:text-lg lg:leading-6 text-base leading-5 font-normal antialiased font-body tracking-[0.07em];
+}
+a {
+  @apply transition-all duration-300 ease-in-out tracking-normal *:tracking-normal;
 }
 .container {
   @apply 2xl:px-25 xl:px-[55px] md:px-6 px-5 max-w-full mx-auto;
@@ -93,7 +97,7 @@ p {
   @apply lg:text-lg text-base leading-6 text-primary font-medium;
 } 
 .link-paddle {
-  @apply relative inline-block overflow-hidden h-6;
+  @apply relative inline-block overflow-hidden;
 }  
 .link-paddle-top,
 .link-paddle-bottom {
@@ -108,4 +112,79 @@ p {
 }
 .link-paddle-item:hover .link-paddle-bottom {
   @apply -translate-y-full;
+}
+
+.btn-link-paddle {
+  @apply relative inline-block overflow-hidden h-6;
+}  
+.btn-link-paddle-top,
+.btn-link-paddle-bottom {
+  @apply block transition-transform duration-300 will-change-transform
+           ease-[cubic-bezier(.4,0,.2,1)];
+}
+.btn-link-paddle-bottom {
+  @apply absolute left-0 top-full;
+}
+.btn-link-paddle-item:hover .btn-link-paddle-top {
+  @apply -translate-y-full;
+}
+.btn-link-paddle-item:hover .btn-link-paddle-bottom {
+  @apply -translate-y-full;
+}
+
+/* sets 3D depth */
+.perspective {
+  perspective: 1200px;
+  perspective-origin: center;
+  overflow: hidden;
+}
+@layer components {
+  .button,
+  .ctm-button {
+    @apply relative inline-flex overflow-hidden z-1 cursor-pointer w-fit font-normal font-body capitalize text-white min-h-[55px] text-xl text-center leading-[23px] items-center justify-center px-[32px] max-md:px-6 py-4 rounded-[999px] border duration-300 ease-out max-lg:min-h-[45px] max-md:min-h-[40px] max-md:py-2.5 max-lg:text-lg max-md:text-base max-md:leading-[21px] transition-[color,background-color,border-color,transform,box-shadow];
+  }
+  .btn-cream {
+    @apply bg-cream text-primary border border-solid border-cream;
+  }
+
+}
+.custom-transition {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.social-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* icon hidden + not taking space */
+.social-icon {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(.4,0,.2,1);
+        width: 0;
+    display: none;
+}
+
+/* text stays fixed */
+.social-text {
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+/* on hover → reveal icon + move text */
+.social-link:hover .social-icon {
+  opacity: 1;
+  transform: scale(1);
+          width: auto;
+    display: block;
+}
+
+.social-link:hover .social-text {
+  transform: translateX(44px);
 }
