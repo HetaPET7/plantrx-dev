@@ -2,148 +2,65 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Logo from "./Logo";
 import { slideDownVariants } from "@/animations/framerMotionVariants";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { useIsTablet } from "@/hooks/useIsTablet";
+import { cn } from "@/utils/cn";
 
-interface HeaderProps {
-    onLoadingComplete?: () => void;
-}
-
-function Header({ onLoadingComplete }: HeaderProps) {
-    const isMobile = useIsMobile(768);
-    const isSmallDesk = useIsTablet(768, 1440); 
-    const loadingScale = isMobile
-        ? 1
-        : isSmallDesk
-            ? 1.8
-            : 3
-
-
-    const [animationStage, setAnimationStage] = useState(0);
-    const [isLoading, setIsLoading] = useState(true);
-    const [lockLogoAnimation, setLockLogoAnimation] = useState(false);
-    const [logoTarget, setLogoTarget] = useState<{ x: number; y: number } | null>(null);
-
-    const logoSlotRef = useRef<HTMLDivElement>(null);
-
+function Header() {
+    const [isScrolled, setIsScrolled] = useState(false)
 
     useEffect(() => {
-        const timers = [
-            setTimeout(() => setAnimationStage(1), 100),
-            setTimeout(() => setAnimationStage(2), 700),
-            setTimeout(() => setAnimationStage(3), 1300),
-            setTimeout(() => setAnimationStage(4), 2000),
-            setTimeout(() => setAnimationStage(5), 2400),
-            setTimeout(() => {
-                setIsLoading(false);
-                onLoadingComplete?.();
-            }, 3600),
-        ];
-
-        return () => timers.forEach(clearTimeout);
-    }, [onLoadingComplete]);
-
-    useEffect(() => {
-        if (!logoSlotRef.current || animationStage !== 5) return;
-
-        const measure = () => {
-            const rect = logoSlotRef.current!.getBoundingClientRect();
-
-            setLogoTarget({
-                x: rect.left + rect.width / 2,
-                y: isMobile ? 18 : 40 + rect.height / 2,
-            });
-        };
-
-        measure();
-        window.addEventListener("resize", measure);
-        return () => window.removeEventListener("resize", measure);
-    }, [animationStage]);
-
-
-
+      const onScroll = () => setIsScrolled(window.scrollY > 12)
+      window.addEventListener('scroll', onScroll)
+      return () => window.removeEventListener('scroll', onScroll)
+    }, [])
     return (
         <>
-            <motion.div
-                initial={{ opacity: 1 }}
-                animate={{ opacity: isLoading ? 1 : 0 }}
-                transition={{ duration: 0.4 }}
-                className="fixed inset-0 bg-cream z-99998 flex items-center justify-center"
-                style={{ pointerEvents: isLoading ? "auto" : "none" }}
-            />
-
-            <header className="site-header md:py-10 py-5 container fixed top-0 z-99999 w-full ">
-                <div className="flex items-center justify-between gap-5 md:min-h-10 min-h-8">
-                    <div ref={logoSlotRef} className="logo-wrapper relative h-fit" />
-
-                    <motion.nav
-                        className="navigation-panel"
-                        variants={slideDownVariants as any}
-                        initial="hidden"
-                        whileInView={!isLoading ? 'visible' : 'opacity: 0 '}
-                    >
-                        <ul className="flex items-center xl:gap-20 gap-10">
-                            <li className="nav-item flex group link-paddle-item">
-                                <Link href="" className="nav-link flex">
-                                    <span className="link-paddle">
-                                        <span className="link-paddle-top">CART</span>
-                                        <span className="link-paddle-bottom">CART</span>
-                                    </span>
+            <header className="site-header fixed top-0 z-99999 w-full ">
+                <div className="relative py-5">
+                <motion.div
+                    className="absolute inset-0 bg-cream shadow-black z-0"
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: isScrolled ? 1 : 0 }}
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                    style={{ transformOrigin: 'top' }}
+                />
+                    <div className="container px-5 flex items-center justify-between gap-5 md:min-h-10 min-h-8">
+                        <div className="logo-wrapper relative h-fit">
+                            <div className={cn("custom-transition -mt-1.5 xl:text-[40px] xl:leading-[46px] text-[32px] leading-8 font-heading text-primary")}>
+                                <Link href={"/"}>
+                                Plant<span className="text-secondary">R</span>x
                                 </Link>
-                            </li>
+                            </div>
+                        </div>
+                        <motion.nav
+                            className="navigation-panel"
+                            variants={slideDownVariants as any}
+                            initial="hidden"
+                            whileInView={'visible'}
+                        >
+                            <ul className="flex items-center xl:gap-20 gap-10">
+                                <li className={cn("nav-item flex group link-paddle-item", isScrolled ? 'text-cream' : 'text-primary')}>
+                                    <Link href="" className="nav-link flex">
+                                        <span className="link-paddle">
+                                            <span className="link-paddle-top">CART</span>
+                                            <span className="link-paddle-bottom">CART</span>
+                                        </span>
+                                    </Link>
+                                </li> 
 
-                            <li className="nav-item flex group link-paddle-item">
-                                <Link href="" className="nav-link flex">
-                                    <span className="link-paddle">
-                                        <span className="link-paddle-top">LOGIN</span>
-                                        <span className="link-paddle-bottom">LOGIN</span>
-                                    </span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </motion.nav>
+                                <li className={cn("nav-item flex group link-paddle-item")}>
+                                    <Link href="" className="nav-link flex">
+                                        <span className="link-paddle">
+                                            <span className="link-paddle-top">LOGIN</span>
+                                            <span className="link-paddle-bottom">LOGIN</span>
+                                        </span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </motion.nav>
+                    </div>
                 </div>
             </header>
-
-            <motion.div
-                initial={{
-                    x: "44vw",
-                    y: "48vh",
-                    scale: loadingScale
-                }}
-                animate={
-                    logoTarget
-                        ? {
-                            x: logoTarget.x,
-                            y: logoTarget.y,
-                            scale: 1,
-                        }
-                        : undefined
-                }
-                transition={{
-                    duration: 1,
-                    ease: [0.76, 0, 0.24, 1],
-                }}
-                onAnimationComplete={() => {
-                    setLockLogoAnimation(true);
-                }}
-                style={{
-                    position: "fixed",
-                    transform: "translate(-50%, -50%)",
-                    transformOrigin: "center center",
-                    zIndex: 99999,
-                }}
-            >
-                <Logo
-                    isLink={!isLoading}
-                    animationStage={lockLogoAnimation ? undefined : animationStage}
-                    size={isMobile ? "sm" : isSmallDesk ? "md" : "lg"}
-                />
-            </motion.div >
-
-
         </>
     );
 }

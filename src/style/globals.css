@@ -94,7 +94,7 @@ a {
   @apply 2xl:px-25 xl:px-[55px] md:px-6 px-5 max-w-full mx-auto;
 }
 .navigation-panel .nav-item {
-  @apply lg:text-lg text-base leading-6 text-primary font-medium;
+  @apply lg:text-lg text-base leading-6 font-medium text-primary;
 } 
 .link-paddle {
   @apply relative inline-block overflow-hidden;
@@ -162,7 +162,6 @@ a {
   display: inline-flex;
   align-items: center;
 }
-
 /* icon hidden + not taking space */
 .social-icon {
   position: absolute;

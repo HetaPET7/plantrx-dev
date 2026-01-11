@@ -4,6 +4,7 @@ import HeroBanner from "@/components/layout/hero/HeroBanner";
 import Header from "@/components/navigation/Header";
 import ImageGridSection from '@/components/ImageGridSection';
 import Footer from '@/components/navigation/Footer';
+import QuickProduct from '@/components/Product/QuickProductSection';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +22,7 @@ export default function Home() {
         <div id="next-section">
           <ImageGridSection />
         </div>
+        <QuickProduct />
         <Footer />
       </div> 
     </>
