@@ -13,7 +13,6 @@ function Model({ rotationY }: { rotationY: MotionValue<number> }) {
   useFrame(() => {
     if (!ref.current) return
 
-    // ONE controlled rotation
     ref.current.rotation.y = rotationY.get()
     ref.current.rotation.x = -0.5
     ref.current.rotation.z = -0.5
@@ -43,7 +42,6 @@ export default function ModelViewer({
         </Center>
       </Suspense>
 
-      {/* Enabled AFTER animation naturally */}
       <OrbitControls enableZoom={false} enablePan={false} />
     </Canvas>
   )

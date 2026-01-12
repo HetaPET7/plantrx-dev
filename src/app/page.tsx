@@ -4,20 +4,23 @@ import Header from "@/components/navigation/Header";
 import ImageGridSection from '@/components/ImageGridSection';
 import Footer from '@/components/navigation/Footer';
 import QuickProduct from '@/components/Product/QuickProductSection';
+import ProductStory from "@/components/Product/ProductStory";
+import VideoWithText from "@/components/VideoWithText";
+import ProductBenefits from "@/components/Product/Benefits/ProductBenefits";
+import IngredientsSection from "@/components/IngredientsSection";
 
 export default function Home() {
   return (
     <>
       <Header />
-      
-      <div > 
-        <HeroBanner />
-        <div id="next-section">
-          <ImageGridSection />
-        </div>
-        <QuickProduct />
-        <Footer />
-      </div> 
+
+      <div className="bg-cream relative z-1">
+      <HeroBanner />
+        <ProductBenefits />
+        <IngredientsSection />
+        <VideoWithText />
+      </div>
+      <Footer />
     </>
   );
 }

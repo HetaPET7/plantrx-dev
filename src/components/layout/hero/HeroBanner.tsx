@@ -1,160 +1,119 @@
-'use client';
+"use client";
+import React, { useEffect } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
 
-import { useState } from 'react';
-import { motion, animate, useMotionValue, useTransform } from 'framer-motion';
-import Image from 'next/image';
-import Parallax from '@/animations/Parallax';
-import {
-  slideUpVariants,
-  textContainerVariants,
-} from '@/animations/framerMotionVariants';
-import RevealText from '@/utils/RevealText';
-import Link from 'next/link';
-import { useIsTablet } from '@/hooks/useIsTablet';
+const HeroBanner = () => {
+    // Initialize Lenis for general smooth scrolling if you have other content on the site
+    // useEffect(() => {
+    //     const lenis = new Lenis();
+    //     function raf(time: number) {
+    //         lenis.raf(time);
+    //         requestAnimationFrame(raf);
+    //     }
+    //     requestAnimationFrame(raf);
+    //     return () => lenis.destroy();
+    // }, []);
 
-type HoverZone = 'left' | 'right' | null;
+    // --- ENTRANCE ANIMATION VARIANTS (Kept) ---
+    const wordVars = {
+        initial: { opacity: 0, filter: "blur(10px)", y: 15 },
+        animate: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.8 } },
+    };
 
-function HeroBanner() {
-  const isTablet = useIsTablet(0, 1025)
-  const scrollToNext = () => {
-    const target = document.getElementById('next-section');
-    if (!target) return;
+    const imgFrontLoadVars = {
+        initial: { opacity: 0, x: 253 }, // This creates the "filling" effect on load
+        animate: { opacity: 1, x: 0, transition: { delay: 1, duration: 1.5, ease: [0.33, 1, 0.68, 1] } },
+    };
 
-    const y = target.getBoundingClientRect().top + window.scrollY;
-
-    animate(window.scrollY, y, {
-      duration: 1,
-      ease: 'easeInOut',
-      onUpdate: (v) => window.scrollTo(0, v),
+    const iconLoadVars = (delay: number) => ({
+        initial: { opacity: 0, filter: "blur(15px)", scale: 0.7 },
+        animate: { opacity: 1, filter: "blur(0px)", scale: 1, transition: { delay, duration: 1 } },
     });
-  };
 
-  const [activeZone, setActiveZone] = useState<HoverZone>(null);
+    const words = "EXPERT NATURAL REMEDIES THAT WORK. NO CHEMICALS. NO SIDE EFFECTS. REAL RESULTS.".split(" ");
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+    return (
+        // Changed to h-screen so it only takes up the viewport and doesn't scroll forever
+        <main className="relative h-screen w-full overflow-hidden bg-cream">
+            
+            <section className="h-full w-full flex items-center justify-center">
+                
+                {/* Background road-map (Optional: Set to static opacity since scroll logic is gone) */}
+                <div className="absolute inset-0 z-0 flex flex-col items-center justify-center opacity-20 pointer-events-none">
+                    <div className="w-[80%] h-[500px]">
+                        <svg width="100%" height="100%" viewBox="0 0 485 322" fill="none">
+                            <path 
+                                d="M472.479 0.161545C493.646 62.1615 500.379 193.062 357.979 220.662C179.979 255.162 44.4795 172.662 0.479492 321.662" 
+                                stroke="#ccc" strokeWidth="2" strokeDasharray="12 12" 
+                            />
+                        </svg>
+                    </div>                        
+                </div>
 
-  const imageX = useTransform(mouseX, [-0.5, 0.5], [-30, 30]);
-  const imageY = useTransform(mouseY, [-0.5, 0.5], [-30, 30]);
+                <div className="px-10 lg:px-[100px] w-full relative z-10">
+                    <div className="flex flex-wrap items-center">
+                        
+                        {/* LEFT CONTENT: Text Stagger Animation */}
+                        <div className="lg:w-5/12 w-full">
+                            <motion.div 
+                                initial="initial" 
+                                animate="animate" 
+                                transition={{ staggerChildren: 0.05 }}
+                            >
+                                <h2 className="capitalize font-heading text-4xl lg:text-5xl leading-[1.1] font-bold flex flex-wrap">
+                                    {words.map((word, i) => (
+                                        <motion.span key={i} variants={wordVars} className="inline-block mr-3 mt-1">
+                                            {word}
+                                        </motion.span>
+                                    ))}
+                                </h2>
+                            </motion.div>
+                        </div>
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                        {/* RIGHT CONTENT: Product Animation */}
+                        <div className="lg:w-7/12 w-full relative flex justify-center items-center">
+                            
+                            {/* Floating Icons: Animation on Load */}
+                            <div className="absolute inset-0 pointer-events-none">
+                                <motion.div variants={iconLoadVars(1.2)} initial="initial" animate="animate" className="absolute -top-16 left-[15%] w-24 h-24"><Image src="/hero-1.png" alt="icon" width={100} height={100} /></motion.div>
+                                <motion.div variants={iconLoadVars(1.4)} initial="initial" animate="animate" className="absolute -top-16 right-[15%] w-24 h-24"><Image src="/hero-2.png" alt="icon" width={100} height={100} /></motion.div>
+                                <motion.div variants={iconLoadVars(1.6)} initial="initial" animate="animate" className="absolute -bottom-16 left-[15%] w-24 h-24"><Image src="/hero-3.png" alt="icon" width={100} height={100} /></motion.div>
+                                <motion.div variants={iconLoadVars(1.8)} initial="initial" animate="animate" className="absolute -bottom-16 right-[15%] w-24 h-24"><Image src="/hero-4.png" alt="icon" width={100} height={100} /></motion.div>
+                            </div>
 
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-  const Tag = isTablet ? 'div' : Parallax;
+                            {/* Main Product: Removed Scroll Transformations */}
+                            <div className="relative z-50">
+                                <div className="relative w-[300px] h-[300px] lg:w-[450px] lg:h-[450px]">
+                                    <div className="img-bg">
+                                        <Image 
+                                            src="/product-empty-new.webp" 
+                                            alt="Box" 
+                                            width={450} 
+                                            height={450} 
+                                            priority 
+                                            className="drop-shadow-2xl" 
+                                        />
+                                    </div>
+                                    {/* The "Filling" effect is kept here via imgFrontLoadVars */}
+                                    <motion.div 
+                                        variants={imgFrontLoadVars as any} 
+                                        initial="initial" 
+                                        animate="animate" 
+                                        className="img-front absolute top-0 left-0"
+                                    >
+                                        <Image src="/product-fill-new.webp" alt="Label" width={450} height={450} />
+                                    </motion.div>
+                                </div>
+                            </div>
 
-  return (
-    <section className="hero-banner-section relative overflow-hidden">
-      <div className="relative min-[1025px]:h-dvh min-[768px]:h-[75dvh] h-[85dvh] w-full md:mb-30 mb-10">
-        <div className="h-full flex flex-col justify-center items-center">
-
-          <Tag {...(isTablet ? {} : { distance: 200 })} className='h-full w-full flex items-center justify-center'>
-            <div
-            className='container'
-              onMouseMove={handleMouseMove}
-              onMouseLeave={() => setActiveZone(null)}
-            >
-              <motion.div
-              className="flex flex-col items-center relative z-20">
-                <h1
-                className="font-heading md:text-[7vw] md:leading-[10vw] text-[13vw] leading-[15vw] text-center text-primary">
-                  Welcome To <span> Plant<span className="text-secondary">R</span>x</span>
-                </h1>
-
-                <motion.div 
-                  className="text-center md:mt-6 mt-4 text-primary font-body"
-                >
-                  <RevealText tag='p'>
-                    Expert natural remedies that work.
-                  </RevealText>
-                  <RevealText tag='p'>
-                    No chemicals. No side effects. Real results.
-                  </RevealText>
-                </motion.div>
-              </motion.div>
-
-              {/* <div className="absolute inset-0 z-20">
-                <div
-                  className="absolute left-0 top-0 h-full w-1/2"
-                  onMouseEnter={() => setActiveZone('left')}
-                />
-                <div
-                  className="absolute right-0 top-0 h-full w-1/2"
-                  onMouseEnter={() => setActiveZone('right')}
-                />
-              </div>
-
-              <div className="absolute inset-0 z-10 pointer-events-none overflow-visible">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  animate={
-                    activeZone === 'left'
-                      ? { opacity: 1, scale: 1 }
-                      : { opacity: 0, scale: 0.85 }
-                  }
-                  transition={{ duration: 0.4, ease: 'easeOut' }}
-                  style={{ x: imageX, y: imageY }}
-                  className="absolute xl:left-30 md:left-20 left-10 xl:top-[10%] md:top-[4%] top-[15%]"
-                >
-                  <div className='xl:h-[28vw] md:h-[45vw] h-[50vw] w-full aspect-3/4'>
-                    <Image
-                      src="/hero-hover-1.jpg"
-                      alt="hero hover left"
-                      width={1000}
-                      height={1000} 
-                      priority
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={
-                    activeZone === 'right'
-                      ? { opacity: 1, scale: 1 }
-                      : { opacity: 0, scale: 0.85 }
-                  }
-                  transition={{ duration: 0.4, ease: 'easeOut' }}
-                  style={{ x: imageX, y: imageY }}
-                  className="absolute xl:right-30 md:right-20 right-7 xl:-bottom-[5%] bottom-20"
-                >
-                  <div className="xl:h-[28vw] md:h-[45vw] h-[50vw] w-full aspect-3/4">
-                    <Image
-                      src="/hero-hover-2.jpg"
-                      alt="hero hover right"
-                      width={1000}
-                      height={1000}
-                      priority
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </motion.div>
-              </div> */}
-
-            </div>
-          </Tag>
-          <div className='absolute bottom-5 flex justify-center w-full left-0 z-10 container'>
-            <motion.div
-              onClick={scrollToNext}
-              className="scroll-discover-link cursor-pointer z-30"
-            >
-              <p className="scroll-link text-primary uppercase text-base link-paddle-item *:tracking-normal">
-                <span className="link-paddle">
-                  <span className="link-paddle-top">Scroll to discover</span>
-                  <span className="link-paddle-bottom">Scroll to discover</span>
-                </span>
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
+};
 
 export default HeroBanner;

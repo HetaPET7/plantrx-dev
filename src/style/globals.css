@@ -36,10 +36,12 @@
   --color-primary: #059669;
   --color-secondary: #f59e0b;
   --color-cream: #fffeef;
+  --color-font: #005139;
   --color-green-500: #0BD294;
 
   /* font-family */
   --font-body: "switzer-regular", sans-serif;
+  --font-body-light: "switzer-light", sans-serif;
   --font-heading: "outfit-semibold", sans-serif; 
 
   /* font-size */
@@ -81,9 +83,9 @@
     @apply m-0 outline-0 font-heading text-black;
   }
 }
-/* h2, .h2 {
-  @apply mdscreen:text-4xl mdscreen:leading-[44px] text-2xl leading-8;
-} */
+h2, .h2 { 
+  @apply text-6xl max-[1199px]:text-5xl max-[1199px]:leading-14 max-lg:text-4xl max-lg:leading-10 leading-18;
+}
 p { 
   @apply lg:text-lg lg:leading-6 text-base leading-5 font-normal antialiased font-body tracking-[0.07em];
 }
@@ -141,7 +143,7 @@ a {
 @layer components {
   .button,
   .ctm-button {
-    @apply relative inline-flex overflow-hidden z-1 cursor-pointer w-fit font-normal font-body capitalize text-white min-h-[55px] text-xl text-center leading-[23px] items-center justify-center px-[32px] max-md:px-6 py-4 border duration-300 ease-out max-lg:min-h-[45px] max-md:min-h-[40px] max-md:py-2.5 max-lg:text-lg max-md:text-base max-md:leading-[21px] transition-[color,background-color,border-color,transform,box-shadow];
+    @apply relative inline-flex overflow-hidden z-1 cursor-pointer w-fit font-normal font-body capitalize text-white text-xl text-center leading-[23px] items-center justify-center px-[32px] max-md:px-6 py-2 border duration-300 ease-out rounded-4xl max-lg:min-h-[45px] max-md:min-h-[40px] max-md:py-2.5 max-lg:text-lg max-md:text-base max-md:leading-[21px] transition-[color,background-color,border-color,transform,box-shadow];
   }
 
   .btn-green {
@@ -158,37 +160,18 @@ a {
 }
 
 .social-link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+  @apply relative inline-flex items-center;
 }
-/* icon hidden + not taking space */
 .social-icon {
-  position: absolute;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.8);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s cubic-bezier(.4,0,.2,1);
-        width: 0;
-    display: none;
+  @apply absolute opacity-0 pointer-events-none w-0 hidden scale-[0.8] left-0;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* text stays fixed */
 .social-text {
-  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  @apply transition-transform duration-[0.3s] ease-[cubic-bezier(.4,0,0.2,1)];
 }
-
-/* on hover → reveal icon + move text */
 .social-link:hover .social-icon {
-  opacity: 1;
-  transform: scale(1);
-          width: auto;
-    display: block;
+  @apply opacity-100 w-auto block scale-100;
 }
-
 .social-link:hover .social-text {
-  transform: translateX(44px);
+  @apply translate-x-2.5;
 }
