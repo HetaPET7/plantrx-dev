@@ -9,15 +9,15 @@ function Footer() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
-    <footer className="footer sticky bottom-0 z-0">
+    <footer className="footer sticky bottom-0 -z-1">
       <div className="container">
-        <div className="footer-main mt-20 mb-10 max-md:mt-10">
+        <div className="footer-main pt-20 pb-10 max-md:mt-10">
 
           <div className="flex max-[991px]:flex-wrap gap-5 max-[991px]:gap-y-9 max-[991px]:gap-x-0 justify-between min-[991px]:py-10 py-8">
 
             {/* LEFT CONTENT */}
             <div className="flex flex-col gap-4 max-w-xl w-1/2 max-md:w-full max-[991px]:pr-5 max-md:pr-0">
-              <RevealText tag="h2" className="text-2xl! leading-normal! font-bold text-font">
+              <RevealText tag="h2" className="text-2xl! leading-normal!">
                 We Value Your Opinion
               </RevealText>
 
@@ -25,7 +25,7 @@ function Footer() {
                 Help us grow by sharing your thoughts. Your feedback shapes the future of PlantRx.
               </RevealText>
 
-              <RevealText tag="span" className="text-font font-bold text-base">
+              <RevealText tag="span" className="text-font  text-base">
                 Get 15% off any purchase as a thank you!
               </RevealText>
 
@@ -47,7 +47,7 @@ function Footer() {
                   { title: "Billing & Refunds", email: "billing@plantrxapp.com" },
                 ].map((item, index) => (
                   <div key={index} className="flex flex-col">
-                    <RevealText tag="h4" className="text-font font-bold uppercase text-sm">
+                    <RevealText tag="h4" className="uppercase *:text-lg *:leading-[22px]">
                       {item.title}
                     </RevealText>
 
@@ -314,7 +314,7 @@ function Footer() {
           {/* COPYRIGHT */}
           <div className="border-t border-font min-[991px]:py-5 py-2.5">
             <div className="flex gap-2 flex-wrap items-center justify-between">
-              <Link href="/" className="nav-link flex xl:text-5xl text-3xl font-heading font-semibold text-font">
+              <Link href="/" className="nav-link flex xl:text-5xl text-3xl font-heading text-primary">
                 <span className="logo-text" data-text="PlantRx">
                   <span className="logo">PlantRx</span>
                 </span>

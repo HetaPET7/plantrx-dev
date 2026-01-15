@@ -1,29 +1,8 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'outfit-bold';
-  src: url('/fonts/Outfit-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'outfit-semibold';
-  src: url('/fonts/Outfit-SemiBold.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'switzer-light';
-  src: url('/fonts/Switzer-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'switzer-regular';
-  src: url('/fonts/Switzer-Regular.woff') format('woff');
+  font-family: 'cubao-free';
+  src: url('/fonts/Cubao_Free_Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -33,16 +12,16 @@
   /* Color */
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-primary: #059669;
+  --color-primary: #218656;
   --color-secondary: #f59e0b;
   --color-cream: #fffeef;
   --color-font: #005139;
-  --color-green-500: #0BD294;
+  --color-green-500: #0BD294; 
+  --color-green-100: #C4FEDB; 
 
   /* font-family */
-  --font-body: "switzer-regular", sans-serif;
-  --font-body-light: "switzer-light", sans-serif;
-  --font-heading: "outfit-semibold", sans-serif; 
+  --font-body:  "Happy Monkey", system-ui;
+  --font-heading: "cubao-free"; 
 
   /* font-size */
   --text-25: 25px;
@@ -71,7 +50,7 @@
     @apply scroll-smooth!;
   }
   body {
-    @apply p-0 m-0 lg:text-lg lg:leading-6 text-base leading-5 font-normal font-body text-black antialiased bg-cream tracking-[0.03em];
+    @apply p-0 m-0 xl:text-xl xl:leading-6 lg:text-lg lg:leading-[22px] text-base leading-5 font-normal font-body text-font antialiased bg-cream tracking-[0.03em];
     -webkit-font-smoothing: antialiased;
   }
   h1,
@@ -80,21 +59,24 @@
   h4,
   h5,
   h6 {
-    @apply m-0 outline-0 font-heading text-black;
+    @apply m-0 outline-0 font-heading text-primary tracking-[0.03em];
   }
+}
+h1, .h1 { 
+  @apply text-8xl leading-25 max-[1199px]:text-5xl max-[1199px]:leading-14 max-lg:text-4xl max-lg:leading-10;
 }
 h2, .h2 { 
   @apply text-6xl max-[1199px]:text-5xl max-[1199px]:leading-14 max-lg:text-4xl max-lg:leading-10 leading-18;
 }
 p { 
-  @apply lg:text-lg lg:leading-6 text-base leading-5 font-normal antialiased font-body tracking-[0.07em];
+  @apply xl:text-xl xl:leading-6 lg:text-lg lg:leading-[22px] text-base leading-5 font-normal antialiased font-body tracking-[0.07em];
 }
 a {
   @apply transition-all duration-300 ease-in-out tracking-normal *:tracking-normal;
 }
 .container {
   @apply 2xl:px-25 xl:px-[55px] md:px-6 px-5 max-w-full mx-auto;
-}
+} 
 .navigation-panel .nav-item {
   @apply lg:text-lg text-base leading-6 font-medium text-primary;
 } 
@@ -143,7 +125,7 @@ a {
 @layer components {
   .button,
   .ctm-button {
-    @apply relative inline-flex overflow-hidden z-1 cursor-pointer w-fit font-normal font-body capitalize text-white text-xl text-center leading-[23px] items-center justify-center px-[32px] max-md:px-6 py-2 border duration-300 ease-out rounded-4xl max-lg:min-h-[45px] max-md:min-h-[40px] max-md:py-2.5 max-lg:text-lg max-md:text-base max-md:leading-[21px] transition-[color,background-color,border-color,transform,box-shadow];
+    @apply relative inline-flex overflow-hidden z-1 cursor-pointer w-fit font-bold font-body uppercase text-cream text-lg text-center leading-[22px] items-center justify-center px-[32px] max-md:px-6 py-3 border duration-300 ease-out rounded-4xl max-lg:min-h-[45px] max-md:min-h-[40px] max-md:py-2.5 max-md:text-base max-md:leading-[21px] transition-[color,background-color,border-color,transform,box-shadow];
   }
 
   .btn-green {
@@ -172,6 +154,12 @@ a {
 .social-link:hover .social-icon {
   @apply opacity-100 w-auto block scale-100;
 }
-.social-link:hover .social-text {
+.social-link:hover .social-text { 
   @apply translate-x-2.5;
 }
+.custom-cursor {
+  @apply fixed inset-0 size-5 rounded-full bg-primary pointer-events-none z-999999;
+}
+.product-cta-wrapper .bg-vector {
+  animation: spin 14s linear infinite;
+} 

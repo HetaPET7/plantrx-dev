@@ -6,24 +6,10 @@ import { slideDownVariants } from "@/animations/framerMotionVariants";
 import { cn } from "@/utils/cn";
 
 function Header() {
-    const [isScrolled, setIsScrolled] = useState(false)
-
-    useEffect(() => {
-      const onScroll = () => setIsScrolled(window.scrollY > 12)
-      window.addEventListener('scroll', onScroll)
-      return () => window.removeEventListener('scroll', onScroll)
-    }, [])
     return (
         <>
-            <header className="site-header fixed top-0 z-99999 w-full ">
-                <div className="relative py-5">
-                <motion.div
-                    className="absolute inset-0 bg-cream shadow-black z-0"
-                    initial={{ scaleY: 0 }}
-                    animate={{ scaleY: isScrolled ? 1 : 0 }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
-                    style={{ transformOrigin: 'top' }}
-                />
+            <header className="site-header relative z-999 w-full ">
+                <div className="relative py-7">
                     <div className="container px-5 flex items-center justify-between gap-5 md:min-h-10 min-h-8">
                         <div className="logo-wrapper relative h-fit">
                             <div className={cn("custom-transition -mt-1.5 xl:text-[40px] xl:leading-[46px] text-[32px] leading-8 font-heading text-primary")}>
@@ -39,7 +25,7 @@ function Header() {
                             whileInView={'visible'}
                         >
                             <ul className="flex items-center xl:gap-20 gap-10">
-                                <li className={cn("nav-item flex group link-paddle-item", isScrolled ? 'text-cream' : 'text-primary')}>
+                                <li className={cn("nav-item flex group link-paddle-item")}>
                                     <Link href="" className="nav-link flex">
                                         <span className="link-paddle">
                                             <span className="link-paddle-top">CART</span>

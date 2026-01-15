@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, DM_Sans } from "next/font/google";
+import { Happy_Monkey } from "next/font/google";
 import './../style/globals.css';
 
-const geist = Geist({
-  variable: "--font-geist",
+const happy_monkey = Happy_Monkey({
+  variable: "--happy-monkey",
   subsets: ["latin"],
-});
-
-const dm_sans = DM_Sans({
-  variable: "--dm-sans",
-  subsets: ["latin"],
+  weight: "400"
 });
 
 export const metadata: Metadata = {
@@ -25,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geist.variable} ${dm_sans.variable} antialiased`}
+        className={`${happy_monkey.variable} antialiased`}
       >
         {children}
       </body>

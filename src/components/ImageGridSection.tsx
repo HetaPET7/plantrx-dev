@@ -1,109 +1,77 @@
 "use client";
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Parallax from '@/animations/Parallax';
-import RevealText from '@/utils/RevealText';
-import { useIsMobile } from '@/hooks/useIsMobile';
 
-function ImageGridSection() {
-    const isMobile = useIsMobile(768);
-    return (
-        <div className="image-grids-section overflow-hidden relative -z-1" >
+import React, { useEffect } from "react";
+import Image from "next/image";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-            <motion.div
-                initial={{ opacity: 0.3 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 1.2, ease: 'easeInOut' }}
-                viewport={{ amount: 0.3 }} 
-                className="image-grids-inner"
+const images = [
+  "/image-gallary-1.png",
+  "/image-gallary-2.png",
+  "/image-gallary-3.png",
+  "/image-gallary-4.png",
+  "/image-gallary-5.png", 
+];
+
+export default function ContinuousImageGallery() {
+  const controls = useAnimation();
+  const { ref, inView } = useInView({
+    threshold: 0, // Trigger when 10% of the section is visible
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      const startSequence = async () => {
+        // 1. Initial nudge to the left (move to -100px)
+        await controls.start({
+          x: -300,
+          transition: { duration: 1.2, ease: "easeOut" },
+        });
+
+        // 2. Start continuous infinite scroll
+        // We animate from the current -100px position 
+        // to (-50% - 100px) to ensure the loop is seamless.
+        controls.start({
+          x: [ "-100px", "calc(-50% - 100px)" ],
+          transition: {
+            duration: 25, // Adjust this for speed (higher = slower)
+            ease: "linear",
+            repeat: Infinity,
+          },
+        });
+      };
+
+      startSequence();
+    }
+  }, [inView, controls]);
+
+  return (
+    <section ref={ref} className="w-full py-30 overflow-hidden">
+      <div className="relative flex">
+        <motion.div
+          animate={controls}
+          initial={{ x: 0 }}
+          className="flex gap-10 px-3"
+          style={{ width: "max-content" }}
+        >
+          {/* Render images twice for a seamless infinite loop */}
+          {[...images, ...images].map((src, index) => (
+            <div
+              key={index}
+              className="relative shrink-0 xl:w-[400px] w-[300px] aspect-square h-auto rounded-[30px] overflow-hidden shadow-black"
             >
-                <div className="image-grid grid xl:grid-cols-3 sm:grid-cols-7 grid-cols-10 2xl:gap-7.5 md:gap-5 gap-2">
-                    <div className='max-xl:col-span-2 '>
-                        <Parallax distance={500} className="h-full">
-                            <motion.div
-                                className="flex flex-col 2xl:gap-7.5 md:gap-5 gap-2 h-full">
-                                <div className="image-wrapper h-full">
-                                    <Image src="/image-grid-1.jpg" alt="image" width={1000} height={1000}
-                                        className=" w-full xl:aspect-square aspect-3/4 h-full sm:min-h-[400px] min-h-[320px] object-cover"
-                                    />
-                                </div>
-                                <div className="image-wrapper h-full">
-                                    <Image src="/image-grid-2.jpg" alt="image" width={1000} height={1000}
-                                        className=" w-full xl:aspect-square aspect-3/4 h-full sm:min-h-[400px] min-h-[320px] object-cover"
-                                    />
-                                </div>
-                                <div className="image-wrapper h-full">
-                                    <Image src="/image-grid-3.jpg" alt="image" width={1000} height={1000}
-                                        className=" w-full xl:aspect-square aspect-3/4 h-full sm:min-h-[400px] min-h-[320px] object-cover"
-                                    />
-                                </div>
-                            </motion.div>
-                        </Parallax>
-                    </div>
-                    <div className='max-xl:col-span-3 max-sm:col-span-6'>
-                        <Parallax distance={-100} className="h-full">
-                            <div className="flex flex-col 2xl:gap-7.5 md:gap-5 gap-2">
-                                <div className="image-wrapper h-full">
-                                    <Image src="/image-grid-4.jpg" alt="image" width={1000} height={1000}
-                                        className=" w-full xl:aspect-square aspect-3/4 h-full sm:min-h-[400px] min-h-[320px] object-cover"
-                                    />
-                                </div>
-                                <div
-                                    className="image-wrapper h-full relative overflow-hidden text-cream bg-primary"
-                                >
-                                    <div className="relative z-10 xl:p-10 md:p-7 p-3 text-cream">
-                                        <RevealText
-                                            tag="h2"
-                                            className="italic 2xl:text-7xl lg:text-6xl md:text-4xl text-32 max-md:leading-9 max-md:leading-7 lg:mb-10 mb-5 text-cream lg:max-w-[400px]"
-                                        >
-                                            Wellness Rooted in Nature
-                                        </RevealText>
-
-                                        <RevealText
-                                            tag="p"
-                                            className="xl:*:text-2xl! xl:*:leadinng-9! max-sm:*:text-sm! max-sm:*:leading-[17px]!"
-                                        >
-                                            Discover plant-powered remedies crafted to support everyday health,
-                                            combining traditional knowledge with modern insight for a balanced lifestyle.
-                                        </RevealText>
-
-                                    </div>
-                                </div>
-
-                                <div className="image-wrapper h-full">
-                                    <Image src="/image-grid-1.jpg" alt="image" width={1000} height={1000}
-                                        className=" w-full xl:aspect-square aspect-3/4 h-full sm:min-h-[400px] min-h-[320px] object-cover"
-                                    />
-                                </div>
-                                
-                            </div>
-                        </Parallax>
-                    </div>
-                    <div className='max-xl:col-span-2'>
-                        <Parallax distance={500} className="h-full">
-                            <div className="flex flex-col 2xl:gap-7.5 md:gap-5 gap-2 h-full">
-                                <div className="image-wrapper h-full">
-                                    <Image src="/image-grid-2.jpg" alt="image" width={1000} height={1000}
-                                        className=" w-full xl:aspect-square aspect-3/4 h-full sm:min-h-[400px] min-h-[320px] object-cover"
-                                    />
-                                </div>
-                                <div className="image-wrapper h-full">
-                                    <Image src="/image-grid-3.jpg" alt="image" width={1000} height={1000}
-                                        className=" w-full xl:aspect-square aspect-3/4 h-full sm:min-h-[400px] min-h-[320px] object-cover"
-                                    />
-                                </div>
-                                <div className="image-wrapper h-full">
-                                    <Image src="/image-grid-4.jpg" alt="image" width={1000} height={1000}
-                                        className=" w-full xl:aspect-square aspect-3/4 h-full sm:min-h-[400px] min-h-[320px] object-cover"
-                                    />
-                                </div>
-                            </div>
-                        </Parallax>
-                    </div>
-                </div>
-            </motion.div>
-        </div>
-    )
+              <Image
+                src={src}
+                alt={`Gallery image ${index + 1}`}
+                fill
+                className="object-cover"
+                priority={index < 5} // Priority for the first set of images
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 }
-
-export default ImageGridSection

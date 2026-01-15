@@ -66,3 +66,58 @@ export const slideUpVariants = {
     },
   },
 };
+export const containerBlurVars = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+}
+export const itemBlurLeftVars = {
+  hidden: {
+    opacity: 0,
+    x: -40,                
+    filter: "blur(10px)",
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",   
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+}
+export const itemBlurRightVars = {
+  hidden: {
+    opacity: 0,
+    x: 40,                
+    filter: "blur(10px)",
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",   
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+}
+export const itemBlurVars = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(10px)",
+  },
+  show: {
+    opacity: 1,
+    filter: "blur(0px)",   
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+}
