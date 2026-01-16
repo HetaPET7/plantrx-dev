@@ -48,7 +48,7 @@ export default function MushroomSection() {
           
           <div className="absolute top-0 left-0 w-full z-0">
             <img 
-               src="/product-fill-box.png" 
+               src="/Product-fill-box.png" 
                alt="Box" 
                className="w-full h-auto block" 
             />
@@ -67,7 +67,7 @@ export default function MushroomSection() {
             className="absolute top-0 left-0 w-full pointer-events-none"
           >
             <img 
-               src="/product-lid.png" 
+               src="/Product-lid.png" 
                alt="Lid" 
                className="w-full h-auto block drop-shadow-2xl" 
             />
