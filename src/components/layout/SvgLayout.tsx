@@ -5,7 +5,6 @@ import Lenis from "@studio-freight/lenis";
 
 const SvgLayout = () => {
 
-    // Animation Variants
     const svgVariants = {
         hidden: {
             pathLength: 0,
@@ -15,16 +14,16 @@ const SvgLayout = () => {
         visible: {
             pathLength: 1,
             opacity: 1,
-            fillOpacity: 0.1, // Draw hone ke baad halke se rang bharega
+            fillOpacity: 0.1, 
             transition: {
                 pathLength: {
                     type: "tween",
-                    duration: 9, // Kitna slow draw hoga (seconds)
+                    duration: 9, 
                     bounce: 0,
                     ease: "easeInOut"
                 },
                 opacity: { duration: 0.9 },
-                fillOpacity: { delay: 9, duration: 5 } // Drawing finish hone ke baad fill aayega
+                fillOpacity: { delay: 9, duration: 5 } 
             }
         }
     };
@@ -38,10 +37,10 @@ const SvgLayout = () => {
         visible: (i: number) => ({
             pathLength: 1,
             opacity: 1,
-            fillOpacity: 0.1, // Drawing khatam hone par halka fill aayega
+            fillOpacity: 0.1, 
             transition: {
                 pathLength: {
-                    delay: i * 0.3, // Har SVG stagger hoke draw hoga
+                    delay: i * 0.3, 
                     type: "spring",
                     duration: 3,
                     bounce: 0

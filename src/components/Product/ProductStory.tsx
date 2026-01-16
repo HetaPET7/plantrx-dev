@@ -7,24 +7,20 @@ import { useRef, useMemo } from 'react'
 const title = "Focus That Fits Your Day";
 const lines = ['Clean energy and clarity in a simple daily strip.'];
 
-/**
- * Range Config: [Start Enter, Finish Enter, Start Exit, Finish Exit]
- * This 4-point system allows the image to stay still in the middle.
- */
 const imageData = [
     { 
         src: '/image-story-1.png', 
-        range: [0.35, 0.45, 0.55, 0.65], // Enter 35-45, Stay 45-55, Exit 55-65
+        range: [0.35, 0.45, 0.55, 0.65], 
         side: 'left', align: '3%', targetTop: '25%' 
     },
     { 
         src: '/image-story-2.png', 
-        range: [0.50, 0.60, 0.70, 0.80], // Enter 50-60, Stay 60-70, Exit 70-80
+        range: [0.50, 0.60, 0.70, 0.80], 
         side: 'right', align: '3%', targetTop: '30%' 
     },
     { 
         src: '/image-story-3.png', 
-        range: [0.65, 0.75, 0.85, 0.95], // Enter 65-75, Stay 75-85, Exit 85-95
+        range: [0.65, 0.75, 0.85, 0.95], 
         side: 'left', align: '3%', targetTop: '35%' 
     },
 ];
@@ -32,7 +28,6 @@ const imageData = [
 export default function ProductStory() {
     const sectionRef = useRef<HTMLDivElement>(null)
 
-    // Increased height to 800vh for much slower scrolling
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ['start start', 'end end'],
@@ -50,7 +45,6 @@ export default function ProductStory() {
         <section className='product-story-section relative'>
             <div ref={sectionRef} className="relative h-[800vh]">
                 <div className="sticky top-0 h-screen w-full overflow-hidden">
-                    {/* 1. Title Animation (0.0 - 0.3) */}
                     <div className='container flex flex-col items-center justify-center h-full'>
                       <h3 className="font-heading text-6xl md:text-8xl font-bold text-center max-w-4xl flex flex-wrap justify-center z-10">
                           {characters.map((item, i) => (
@@ -63,7 +57,6 @@ export default function ProductStory() {
                           ))}
                       </h3>
 
-                      {/* 2. Subtitle Line Animation (0.25 - 0.35) */}
                       <div className="mt-10 text-xl md:text-2xl text-center text-gray-600 z-10">
                           {lines.map((text, index) => {
                               const clipPath = useTransform(
@@ -83,7 +76,6 @@ export default function ProductStory() {
                       </div>
                     </div>
 
-                    {/* 3. ZigZag Images with 4-point range (Pause in middle) */}
                     {imageData.map((img, i) => (
                         <StoryImage 
                             key={i} 
@@ -133,20 +125,18 @@ function StoryImage({ src, progress, range, side, align, targetTop }: {
   const opacity = useTransform(progress, range, [0, 1, 1, 0]);
   const scale = useTransform(progress, range, [0.6, 1, 1, 0.6]);
   
-  // This pushes the image further left if it's on the left side, 
-  // and further right if it's on the right side.
   const x = useTransform(progress, range, [
-    side === 'left' ? "-50%" : "50%", // Increased from 20% to 50%
+    side === 'left' ? "-50%" : "50%",
     "0%", 
     "0%", 
     side === 'left' ? "-50%" : "50%"
 ]);
 
 const rotate = useTransform(progress, range, [
-  side === 'left' ? -60 : 60,  // Very aggressive tilt coming from bottom
-  side === 'left' ? -10 : 10,  // Stays slightly tilted while user reads
-  side === 'left' ? -10 : 10,  // Still slightly tilted
-  side === 'left' ? 60 : -60   // Very aggressive tilt going to top
+  side === 'left' ? -60 : 60,  
+  side === 'left' ? -10 : 10,  
+  side === 'left' ? -10 : 10,  
+  side === 'left' ? 60 : -60   
 ]);
   return (
       <motion.div
@@ -158,11 +148,9 @@ const rotate = useTransform(progress, range, [
         rotate,
         top: targetTop,
         [side]: align,
-        // Tilt from the bottom center instead of middle center
         originY: 1, 
         originX: side === 'left' ? 0 : 1, 
     }}
-          // Reduced width slightly for better fit, or use max-w
           className="absolute w-full max-w-[30%] z-20 pointer-events-none"
       >
           <Image

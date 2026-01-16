@@ -11,6 +11,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import ProductBenefits from "@/components/Product/ProductBenefits";
+import ProductDetails from "@/components/Product/ProductDetails";
+import MushroomSection from "@/components/Product/MushroomSection";
 
 export default function Home() {
   return (
@@ -49,15 +51,13 @@ export default function Home() {
       <Header />
       <div className="relative z-9 bg-cream">
         <SvgLayout />
-        {/* <ProductCanvas /> */}
         <HeroBannerV2 />
         <ProductStory />
         <ProductBenefits />
-        {/* <ImageGridSection /> */}
-        {/* <ProductBenefits /> */}
+        <MushroomSection />
       </div>
       <div className="relative z-999999 bg-cream">
-        <ProductInformation />
+        {/* <ProductDetails /> */}
         <VideoWithText />
         <Footer />
       </div>

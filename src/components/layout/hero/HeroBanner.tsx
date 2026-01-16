@@ -7,18 +7,15 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 
 function HeroBanner() {
-    // 1. Setup Motion Values for performance (avoids re-renders)
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // 2. Smoothen the movement
     const springConfig = { damping: 25, stiffness: 200 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
 
     const [isHovered, setIsHovered] = useState(false);
 
-    // 3. Handle Mouse Movement
     const handleMouseMove = (e: React.MouseEvent) => {
         mouseX.set(e.clientX);
         mouseY.set(e.clientY);
@@ -35,10 +32,8 @@ function HeroBanner() {
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            // Hide the default cursor when inside this section
             style={{ cursor: 'none' }}
         >
-            {/* 4. The Custom Cursor */}
             <motion.div
                 className="fixed top-0 left-0 w-8 h-8 bg-primary rounded-full pointer-events-none z-[9999] mix-blend-difference"
                 style={{
@@ -46,7 +41,7 @@ function HeroBanner() {
                     y: cursorY,
                     translateX: '-50%',
                     translateY: '-50%',
-                    scale: isHovered ? 1 : 0, // Shrink when leaving
+                    scale: isHovered ? 1 : 0, 
                     opacity: isHovered ? 1 : 0,
                 }}
             />

@@ -1,4 +1,3 @@
-// components/Product/ProductCanvas.tsx
 "use client"
 import { Canvas } from "@react-three/fiber";
 import { Environment, Float, ContactShadows } from "@react-three/drei";
@@ -7,7 +6,6 @@ import { Suspense } from "react";
 
 export default function ProductCanvas() {
   return (
-    // Fixed container that covers the whole screen
     <div className="fixed inset-0 z-2 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 5], fov: 35 }}>
         <ambientLight intensity={1.5} />
