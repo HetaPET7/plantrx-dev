@@ -55,7 +55,7 @@ function VideoWithText() {
                         <div className="text-center max-w-4xl">
 
                             <RevealText
-                                tag="h2"
+                                tag="h3"
                                 className="font-bold text-white mb-4"
                             >
                                 We Craft Durable Gear That Stays Out of the Landfill.

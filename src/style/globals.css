@@ -68,6 +68,9 @@ h1, .h1 {
 h2, .h2 { 
   @apply text-6xl max-[1199px]:text-5xl max-[1199px]:leading-14 max-lg:text-4xl max-lg:leading-10 leading-18;
 }
+h3, .h3 { 
+  @apply text-5xl leading-14 max-lg:text-4xl max-lg:leading-10 max-md:text-3xl  max-md:leading-9;
+}
 p { 
   @apply xl:text-xl xl:leading-6 lg:text-lg lg:leading-[22px] text-base leading-5 font-normal antialiased font-body tracking-[0.07em];
 }
@@ -163,3 +166,26 @@ a {
 .product-cta-wrapper .bg-vector {
   animation: spin 14s linear infinite;
 } 
+.product-box img.box-img:nth-child(3) {
+  @apply max-md:left-[210px]!;
+}
+.text-image .text-with-img:nth-child(4) {
+  @apply max-[1025px]:top-[unset]! max-[1025px]:-bottom-[300px] max-md:-bottom-[200px] max-sm:-bottom-[130px] max-[1025px]:left-1/2! max-[1025px]:-translate-x-1/2;
+}
+@keyframes header-slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes header-slide-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}

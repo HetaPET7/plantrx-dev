@@ -21,15 +21,15 @@ export default function Home() {
       <motion.div
         className='product-cta-wrapper fixed max-w-[140px] -rotate-12 right-14 mb-10 bottom-0 z-999999'
         animate={{
-          y: [0, -20, 0], 
+          y: [0, -20, 0],
         }}
         transition={{
           duration: 3,
-          repeat: Infinity, 
+          repeat: Infinity,
           ease: "easeInOut"
         }}
       >
-        <div className="cta-wrapper">
+        <div className="cta-wrapper max-lg:hidden">
           <Link href={"#"} className="relative">
             <Image
               alt='shop-now-btn'
@@ -47,8 +47,18 @@ export default function Home() {
             />
           </Link>
         </div>
-      </motion.div> 
+      </motion.div>
       <Header />
+      <div className="fixed bottom-0 inset-x-0 z-9999999 pt-2 hidden max-lg:block bg-primary/70 backdrop-blur-md">
+        <Link
+          href="#"
+          className="relative block text-center"
+        >
+          <h3 className="tracking-[2px]! uppercase font-bold font-heading text-white">
+            Shop Now
+          </h3>
+        </Link>
+      </div>
       <div className="relative z-9 bg-cream">
         <SvgLayout />
         <HeroBannerV2 />

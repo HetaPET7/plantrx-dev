@@ -41,8 +41,8 @@ export default function MushroomSection() {
   );
 
   return (
-    <section ref={containerRef} className="relative h-[600vh]">
-      <div className="sticky pt-50 top-0 flex h-screen w-full items-center justify-center overflow-hidden">
+    <section ref={containerRef} className="product-box relative h-[600vh]">
+      <div className="sticky lg:pt-50 top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         
         <div className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] ">
           
@@ -132,7 +132,7 @@ function FloatingElement({ item, progress }: { item: any, progress: MotionValue<
         x, y, opacity, rotate, scale, 
         zIndex: 10 
       }}
-      className={`absolute left-2/4 top-2/4 -translate-2/4 object-contain pointer-events-none drop-shadow-xl
+      className={`box-img absolute left-2/4 top-2/4 -translate-2/4 object-contain pointer-events-none drop-shadow-xl;
         ${isStrip ? 'w-40 md:w-56' : 'w-32 md:w-48'}`}
     />
   );
