@@ -29,7 +29,7 @@ export default function Home() {
           ease: "easeInOut"
         }}
       >
-        <div className="cta-wrapper max-lg:hidden">
+        <div className="cta-wrapper hidden">
           <Link href={"#"} className="relative">
             <Image
               alt='shop-now-btn'
@@ -52,11 +52,13 @@ export default function Home() {
         </div>
       </motion.div>
       <Header />
-      <div className="fixed bottom-0 inset-x-0 z-9999999 pt-2 hidden max-lg:block bg-green/70 backdrop-blur-md">
+      <div className="fixed bottom-0 inset-x-0 z-9999999 px-5 pt-2 pb-1 bg-green/70 backdrop-blur-md">
         <Link
           href="#"
-          className="relative block text-center"
+          className="relative flex items-center justify-center gap-5 text-center"
         >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shopping-cart lg:w-10 lg:h-10 sm:w-8 sm:h-8 w-7 h-7 text-white" aria-hidden="true"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+
           <h3 className="tracking-[2px]! uppercase font-bold font-heading text-white">
             Shop Now
           </h3>
@@ -71,7 +73,7 @@ export default function Home() {
       </div>
       <div className="relative z-999999 bg-cream">
         {/* <ProductDetails /> */}
-        <VideoWithText />
+        {/* <VideoWithText /> */}
         <Footer />
       </div>
     </main>
