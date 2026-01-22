@@ -22,7 +22,7 @@ const HeroBannerV2 = () => {
         animate: { opacity: 1, filter: "blur(0px)", scale: 1, transition: { delay, duration: 1 } },
     });
 
-    
+
 
     return (
         <section className="hero-banner-section relative">
@@ -40,10 +40,10 @@ const HeroBannerV2 = () => {
                                                 initial="initial"
                                                 animate="animate"
                                                 transition={{ duration: 1.1 }}
-                                                className='relative'>
+                                                className='relative font-bold font-playfair'>
                                                 Mushroom focus Strips
                                             </motion.h1>
-                                            <RevealText tag="p" className="mt-5">
+                                            <RevealText tag="p" className="mt-5 font-playfair! leading-5! text-base! sm:text-lg! md:text-xl! lg:text-2xl! lg:leading-7!">
                                                 Enhance focus and everyday wellness with chocolate-flavored Mushroom Focus Strips powered by functional mushrooms.
                                             </RevealText>
                                         </Parallax>
@@ -51,12 +51,12 @@ const HeroBannerV2 = () => {
                                 </div>
 
                                 <div className="lg:w-7/12 w-full relative flex justify-center items-center">
-                                    <div className="absolute inset-0 pointer-events-none">
+                                    {/* <div className="absolute inset-0 pointer-events-none">
                                         <motion.div variants={iconLoadVars(1.2)} initial="initial" animate="animate" className="absolute -top-16 left-[15%] max-[575px]:-top-13 max-[575px]:left-0 xl:w-24 xl:h-24 w-20 h-20 max-[575px]:w-18 max-[575px]:h-18"><Image src="/hero-1.png" alt="icon" width={100} height={100} /></motion.div>
                                         <motion.div variants={iconLoadVars(1.4)} initial="initial" animate="animate" className="absolute -top-16 right-[15%] max-[575px]:-top-13 max-[575px]:right-0 xl:w-24 xl:h-24 w-20 h-20 max-[575px]:w-18 max-[575px]:h-18"><Image src="/hero-2.png" alt="icon" width={100} height={100} /></motion.div>
                                         <motion.div variants={iconLoadVars(1.6)} initial="initial" animate="animate" className="absolute -bottom-16 left-[15%] max-[575px]:-bottom-13 max-[575px]:left-0 xl:w-24 xl:h-24 w-20 h-20 max-[575px]:w-18 max-[575px]:h-18"><Image src="/hero-3.png" alt="icon" width={100} height={100} /></motion.div>
                                         <motion.div variants={iconLoadVars(1.8)} initial="initial" animate="animate" className="absolute -bottom-16 right-[15%] max-[575px]:-bottom-13 max-[575px]:right-0 xl:w-24 xl:h-24 w-20 h-20 max-[575px]:w-18 max-[575px]:h-18"><Image src="/hero-4.png" alt="icon" width={100} height={100} /></motion.div>
-                                    </div>
+                                    </div> */}
                                     <div className="relative z-50">
                                         <div className="relative w-[300px] h-[300px] max-[575px]:w-[270px] xl:w-[450px] xl:h-[450px]">
                                             <div className="img-bg">
@@ -87,7 +87,7 @@ const HeroBannerV2 = () => {
                     </div>
                 </div>
             </div>
-            
+
         </section>
     );
 };

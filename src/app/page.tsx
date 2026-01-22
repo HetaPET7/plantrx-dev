@@ -38,18 +38,21 @@ export default function Home() {
               height={600}
               className="bg-vector"
             />
-            <Image
+            {/* <Image
               alt='shop-now-btn'
               src={"/shop-now-text.svg"}
               width={600}
               height={600}
               className="transition-transform duration-300 absolute inset-0"
-            />
+            /> */}
+            <div className="absolute top-1/2 left-1/2 -translate-1/2 w-full">
+            <h4 className="text-white text-center font-playfair font-bold max-w-[200px] lg:text-2xl">Add To Cart</h4>
+            </div>
           </Link>
         </div>
       </motion.div>
       <Header />
-      <div className="fixed bottom-0 inset-x-0 z-9999999 pt-2 hidden max-lg:block bg-primary/70 backdrop-blur-md">
+      <div className="fixed bottom-0 inset-x-0 z-9999999 pt-2 hidden max-lg:block bg-green/70 backdrop-blur-md">
         <Link
           href="#"
           className="relative block text-center"

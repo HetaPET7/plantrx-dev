@@ -118,7 +118,7 @@ function ProductBenefits() {
                                     </svg>
 
                                 </div>
-                                <h2>Cognitive Support from Lion’s Mane</h2>
+                                <h2 className='font-semibold'>Cognitive Support from Lion’s Mane</h2>
                                 <div className='content pt-[20px]'>
                                     <p>Hericium erinaceus (Lion’s Mane) has been used to support focus and cognitive wellness in everyday life.</p>
                                 </div>
@@ -145,7 +145,7 @@ function ProductBenefits() {
 
 
                             </div>
-                            <h2>Stamina-Promoting Cordyceps</h2>
+                            <h2 className='font-semibold'>Stamina-Promoting Cordyceps</h2>
                             <div className='content pt-[20px]'>
                                 <p>Cordyceps sinensis is valued for its ability to help support normal energy metabolism and stamina.</p>
                             </div>
@@ -171,7 +171,7 @@ function ProductBenefits() {
 
 
                             </div>
-                            <h2>Maitake & Shiitake’s Wellness Boost</h2>
+                            <h2 className='font-semibold'>Maitake & Shiitake’s Wellness Boost</h2>
                             <div className='content pt-[20px]'>
                                 <p>Grifola frondosa (Maitake) and Lentinus edodes (Shiitake) contribute natural compounds that help promote immune balance and antioxidant support.</p>
                             </div>
@@ -202,7 +202,7 @@ function ProductBenefits() {
 
                             </div>
 
-                            <h2>Chocolate Flavor, Zero Fuss</h2>
+                            <h2 className='font-semibold'>Chocolate Flavor, Zero Fuss</h2>
                             <div className='content pt-[20px]'>
                                 <p>These quick-dissolving strips deliver traditional mushroom benefits with no capsules needed — and in a rich, chocolatey flavor.</p>
                             </div>

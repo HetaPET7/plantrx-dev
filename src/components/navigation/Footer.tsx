@@ -316,7 +316,7 @@ function Footer() {
             <div className="flex gap-2 flex-wrap items-center justify-between">
               <Link href="/" className="nav-link flex xl:text-5xl text-3xl font-heading text-primary">
                 <span className="logo-text" data-text="PlantRx">
-                  <span className="logo">PlantRx</span>
+                  <span className="logo font-playfair font-medium">Plant<span className="text-secondary">R</span>x</span>
                 </span>
               </Link>
 

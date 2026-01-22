@@ -1,11 +1,27 @@
 import type { Metadata } from "next";
-import { Happy_Monkey } from "next/font/google";
-import './../style/globals.css';
+import {
+  Happy_Monkey,
+  Playfair_Display,
+  Inter,
+} from "next/font/google";
+import "./../style/globals.css";
 
 const happy_monkey = Happy_Monkey({
   variable: "--happy-monkey",
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
+});
+
+const playfair = Playfair_Display({
+  variable: "--playfair-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -21,7 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${happy_monkey.variable} antialiased`}
+        className={`
+          ${happy_monkey.variable}
+          ${playfair.variable}
+          ${inter.variable}
+          antialiased
+        `}
       >
         {children}
       </body>
