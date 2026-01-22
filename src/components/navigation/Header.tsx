@@ -35,7 +35,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -61,7 +60,7 @@ export default function Header() {
         "Energy Strips",
         "Beauty + Collagen Strips",
       ],
-      dropdownIcons: [Brain, Heart, Anchor,  Moon, Zap, Sparkles],
+      dropdownIcons: [Brain, Heart, Anchor, Moon, Zap, Sparkles],
     },
     { name: "Articles", href: "/" },
     { name: "Store", href: "/store" },
@@ -93,7 +92,7 @@ export default function Header() {
           <div className="container">
             <div className="flex items-center justify-between h-16 lg:h-20">
 
-              {/* Logo */}
+
               <a href="#">
                 <div className="flex items-center gap-3 lg:gap-4">
 
@@ -116,13 +115,13 @@ export default function Header() {
 
                   </div>
                   <div className="text-2xl lg:text-[30px] font-bold font-playfair text-primary">
-                    Plant<span className="text-secondary">R</span>x
+                    Plant<span className="text-light-orange">R</span>x
                   </div>
 
                 </div>
               </a>
 
-              {/* Desktop Navigation */}
+
               <nav className="hidden xl:flex items-center gap-8">
                 {menuItems.map((item) => {
                   const containerRef = useRef<HTMLDivElement>(null);
@@ -146,7 +145,7 @@ export default function Header() {
                       </a>
 
 
-                      {/* Desktop Dropdown */}
+
                       {item.hasDropdown && activeDropdown === item.name && item.dropdownItems && (
                         <div className="absolute top-full mt-0 left-0 mt-0 w-56 z-50">
                           <div className="absolute -inset-1 bg-linear-to-r from-yellow-400 via-amber-500 to-yellow-400 rounded-3xl blur-md opacity-30 animate-pulse pointer-events-none"></div>
@@ -162,9 +161,9 @@ export default function Header() {
                                 }}
                                 className="text-sm  font-playfair px-6 py-3 flex items-center gap-3 font-medium hover:text-yellow-700 transition-all duration-200 hover:bg-yellow-50/70"
                               >
-                                <div className="w-9 h-9 p-2 flex items-center justify-center rounded-2xl bg-linear-to-r from-blue-400 via-purple-500 to-pink-500 shadow-xl transition-transform duration-200 shrink-0">
+                                <div className="w-9 h-9 p-2 flex items-center justify-center rounded-xl bg-gray-100 transition-transform duration-200 shrink-0">
                                   {item.dropdownIcons && item.dropdownIcons[index] ? (
-                                    React.createElement(item.dropdownIcons[index], { className: "w-5 h-5 text-white flex-shrink-0", strokeWidth: 2.5 })
+                                    React.createElement(item.dropdownIcons[index], { className: "w-5 h-5 fill-green stroke-green text-white flex-shrink-0", strokeWidth: 2.5 })
                                   ) : (
                                     <span className="w-5 h-5 shrink-0"></span>
                                   )}
@@ -182,16 +181,16 @@ export default function Header() {
               </nav>
 
 
-              {/* Desktop Right Side Icons */}
+
               <div className="hidden xl:flex items-center gap-3">
-                {/* Font Size Toggle */}
+
                 <button className="cursor-pointer w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-lg transition-colors duration-200">
 
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-100"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" x2="15" y1="20" y2="20"></line><line x1="12" x2="12" y1="4" y2="20"></line></svg>
 
                 </button>
 
-                {/* Language Toggle */}
+
                 <button className="cursor-pointer w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-lg transition-colors duration-200">
                   <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" strokeWidth="2" />
@@ -199,29 +198,31 @@ export default function Header() {
                   </svg>
                 </button>
 
-                {/* Light/Dark Mode Toggle */}
+
                 <button className="cursor-pointer w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-lg transition-colors duration-200">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-100"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
                 </button>
 
-                {/* Shopping Cart */}
+
                 <button className="cursor-pointer w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-lg transition-colors duration-200">
                   <ShoppingCart className="w-5 h-5 text-gray-700" />
                 </button>
 
-                {/* User Account */}
+
                 <button className="cursor-pointer font-playfair  items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground rounded-md px-2.5 py-1 text-xs sm:h-10 sm:px-3 sm:py-1.5 sm:text-sm hidden sm:flex text-black37 hover:text-gray-300 border-gray-300 dark:border-black37 hover:bg-gray-50 dark:hover:bg-gray-800">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user w-4 h-4 mr-2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                   <span> Sign In</span>
                 </button>
 
-                {/* Sign Up Button */}
-                <button className="cursor-pointer font-playfair text-black  items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 sm:[&_svg]:size-5 [&_svg]:shrink-0 bg-linear-to-br from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-primary/90 h-9 px-3 py-1.5 sm:h-10 sm:px-4 sm:py-2 sm:text-base luxury-button-primary hidden sm:flex text-sm">
+
+                <button
+                  className="cursor-pointer font-playfair text-black items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-transform duration-300 ease-out hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 sm:[&_svg]:size-5 [&_svg]:shrink-0 bg-linear-to-br from-yellow-400 via-yellow-500 to-yellow-600 h-9 px-3 py-1.5 sm:h-10 sm:px-4 sm:py-2 sm:text-base luxury-button-primary hidden sm:flex text-sm"
+                >
                   Sign Up
                 </button>
               </div>
 
-              {/* Mobile Hamburger Menu */}
+
               <button
                 onClick={handleHamburgerClick}
                 className="xl:hidden w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-lg transition-colors duration-200 z-50"
@@ -240,7 +241,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+
       {mobileMenuOpen && (
         <div
           className="xl:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
@@ -248,14 +249,14 @@ export default function Header() {
         />
       )}
 
-      {/* Mobile Menu Sidebar */}
+
       <div
         className={`xl:hidden fixed top-0 right-0 h-full w-80 max-w-full bg-cream z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
       >
         <div className="px-4 py-6 space-y-4">
 
-          {/* Close Button */}
+
           <div className="flex justify-end mb-4">
             <button
               onClick={() => setMobileMenuOpen(false)}
@@ -265,7 +266,7 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+
           <div className="space-y-2">
             {menuItems.map((item) => (
               <div key={item.name}>
@@ -290,7 +291,7 @@ export default function Header() {
                   )}
                 </div>
 
-                {/* Mobile Dropdown */}
+
                 {item.hasDropdown && mobileActiveDropdown === item.name && item.dropdownItems && (
                   <div className="pl-4 pb-2 space-y-1">
                     {item.dropdownItems.map((dropdownItem) => (
@@ -309,18 +310,18 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Mobile Settings Section */}
+
           <div className="pt-6 border-t-2 border-gray-200">
             <h4 className="text-xl font-semibold text-black37 uppercase tracking-wide mb-4">Settings</h4>
 
             <div className="space-y-3">
-              {/* Font Size */}
+
               <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200">
                 <span className="text-black37 font-medium">Font Size</span>
                 <span className="text-lg font-semibold text-black37">A</span>
               </button>
 
-              {/* Language */}
+
               <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200">
                 <span className="text-black37 font-medium">Language</span>
                 <svg className="w-5 h-5 text-black37" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -329,7 +330,7 @@ export default function Header() {
                 </svg>
               </button>
 
-              {/* Theme */}
+
               <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200">
                 <span className="text-black37 font-medium">Theme</span>
                 <svg className="w-5 h-5 text-black37" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -340,12 +341,12 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Actions Section */}
+
           <div className="pt-6 border-t-2 border-gray-200">
             <h4 className="text-xl font-semibold text-black37 uppercase tracking-wide mb-4">Account</h4>
 
             <div className="space-y-3">
-              {/* Shopping Cart */}
+
               <a
                 href="#"
                 className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200"
@@ -355,7 +356,7 @@ export default function Header() {
                 <ShoppingCart className="w-5 h-5 text-black37" />
               </a>
 
-              {/* My Account */}
+
               <a
                 href="#"
                 className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200"
@@ -367,7 +368,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Auth Buttons */}
+
           <div className="pt-6 space-y-3">
             <button
               className="w-full px-4 py-3 text-black37 border border-gray-300 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"

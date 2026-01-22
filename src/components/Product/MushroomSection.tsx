@@ -112,7 +112,7 @@ function FloatingElement({ item, progress }: { item: typeof FLOAT_ITEMS[number],
       : [1, 1, 0]
   );
 
-  // CHANGED: Start earlier - from 0.4 → 0.2
+
   const textOpacity = useTransform(progress, [0.2, 0.4, 0.9, 1], [0, 1, 1, 0]);
   const textScale = useTransform(progress, [0.2, 0.4], [0.8, 1]);
 
@@ -138,7 +138,6 @@ function FloatingElement({ item, progress }: { item: typeof FLOAT_ITEMS[number],
       }}
       className="box-img absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center gap-1 xs:gap-1.5 sm:gap-2 w-max max-md:top-[52%]!"
     >
-      {/* Perfect responsive images */}
       <motion.img
         src={item.src}
         alt={item.name}
@@ -156,7 +155,7 @@ function FloatingElement({ item, progress }: { item: typeof FLOAT_ITEMS[number],
           }`}
       />
 
-      {/* Perfect responsive text labels */}
+
       <motion.p
         style={{ opacity: textOpacity, scale: textScale }}
         className="text-[10px]! xs:!text-xs sm:text-sm! font-bold text-white/95 drop-shadow-2xl text-center px-1.5 xs:px-2 sm:px-3 md:px-4 py-0.5 xs:py-1 sm:py-1.5 md:py-2 bg-linear-to-r from-green/80 via-green/90 to-green/80 backdrop-blur-md  rounded-full shadow-2xl whitespace-nowrap min-w-[60px] xs:min-w-[70px] sm:min-w-[85px] md:min-w-[100px] tracking-wide leading-tight"
