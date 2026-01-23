@@ -11,7 +11,7 @@ function Footer() {
   return (
     <footer className="footer sticky bottom-0 -z-1">
       <div className="container">
-        <div className="footer-main pt-20 pb-10 max-md:mt-10">
+        <div className="footer-main pt-20 pb-16 max-md:mt-10">
 
           <div className="flex max-[991px]:flex-wrap gap-5 max-[991px]:gap-y-9 max-[991px]:gap-x-0 justify-between min-[991px]:py-10 py-8">
 
@@ -314,11 +314,32 @@ function Footer() {
           {/* COPYRIGHT */}
           <div className="border-t border-font min-[991px]:py-5 py-2.5">
             <div className="flex gap-2 flex-wrap items-center justify-between">
-              <Link href="/" className="nav-link flex xl:text-5xl text-3xl font-heading text-primary">
-                <span className="logo-text" data-text="PlantRx">
-                  <span className="logo font-playfair font-medium">Plant<span className="text-light-orange">R</span>x</span>
-                </span>
-              </Link>
+            <a href="#">
+                <div className="flex items-center gap-3 lg:gap-4">
+
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 bg-linear-to-br from-yellow-400 via-yellow-500 to-yellow-600 rounded-xl lg:rounded-xl flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-5 h-5 lg:w-6 lg:h-6 text-white"
+                    >
+                      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                    </svg>
+
+                  </div>
+                  <div className="text-2xl lg:text-[30px] font-bold font-playfair text-primary">
+                    Plant<span className="text-light-orange">R</span>x
+                  </div>
+                </div>
+              </a>
 
               <RevealText tag="p" className="text-lg font-bold text-font">
                 © 2025, PlantRx Ltd. All rights reserved.
