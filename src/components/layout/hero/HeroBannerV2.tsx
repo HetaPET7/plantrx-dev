@@ -41,7 +41,7 @@ const HeroBannerV2 = () => {
                                                 animate="animate"
                                                 transition={{ duration: 1.1 }}
                                                 className='relative font-bold font-playfair'>
-                                                Mushroom focus Strips
+                                                Mushroom <span className="green">focus</span> <span className="orange">Strips</span>
                                             </motion.h1>
                                             <RevealText tag="p" className="mt-5 font-playfair! leading-5! text-base! sm:text-lg! md:text-xl! lg:text-2xl! lg:leading-7!">
                                                 Enhance focus and everyday wellness with chocolate-flavored Mushroom Focus Strips powered by functional mushrooms.

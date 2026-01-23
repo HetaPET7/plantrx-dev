@@ -93,7 +93,7 @@ h3,
 }
 
 p {
-  @apply text-xs sm:text-sm lg:text-base leading-relaxed;
+  @apply text-xs sm:text-sm lg:text-lg leading-relaxed;
 }
 
 a {
@@ -213,6 +213,14 @@ a {
 
 .text-image .text-with-img:nth-child(4) {
   @apply max-[1025px]:top-[unset]! max-[1025px]:-bottom-[300px] max-md:-bottom-[200px] max-sm:-bottom-[130px] max-[1025px]:left-1/2! max-[1025px]:-translate-x-1/2;
+}
+
+span.green {
+  @apply text-green
+}
+
+span.orange {
+  @apply text-light-orange;
 }
 
 @keyframes header-slide-down {

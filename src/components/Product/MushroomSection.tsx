@@ -3,14 +3,14 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 
 const FLOAT_ITEMS = [
-  { id: 1, src: "/float-mushrrom.png", name: "Magic Mushroom", packX: -50, packY: -30, x: -650, y: -450, rotate: -45, scale: 1.2, delay: 0.1 },
-  { id: 2, src: "/float-mushroom2.png", name: "Golden Shroom", packX: -100, packY: -60, x: 750, y: 50, rotate: -90, scale: 0.8, delay: 0.25 },
-  { id: 3, src: "/float-chocolate1.png", name: "Dark Chocolate", packX: 20, packY: -50, x: 650, y: -450, rotate: 180, scale: 0.9, delay: 0.15 },
-  { id: 4, src: "/float-chocolate2.png", name: "Milk Chocolate", packX: 0, packY: -40, x: -750, y: -50, rotate: 25, scale: 1.1, delay: 0.25 },
-  { id: 5, src: "/float-mushroom2.png", name: "Wild Shroom", packX: 70, packY: -25, x: -600, y: 400, rotate: 360, scale: 1.0, delay: 0.35 },
-  { id: 6, src: "/brown-strips.png", name: "Candy Strips", packX: 10, packY: 0, x: 50, y: -700, rotate: 720, scale: 0.9, delay: 0.3 },
-  { id: 7, src: "/brown-strips.png", name: "Sweet Strips", packX: 30, packY: 60, x: 600, y: 450, rotate: -360, scale: 0.7, delay: 0.4 },
-  { id: 8, src: "/brown-strips.png", name: "Caramel Strips", packX: -30, packY: 55, x: -150, y: 650, rotate: 450, scale: 0.8, delay: 0.45 },
+  { id: 1, src: "/float-mushrrom.png", name: "Magic Mushroom", packX: -50, packY: -30, x: -650, y: -450, rotate: 720, scale: 1, delay: 0.1 },
+  { id: 2, src: "/float-mushroom2.png", name: "Golden Shroom", packX: -100, packY: -60, x: 750, y: 50, rotate: 720, scale: 1, delay: 0.25 },
+  { id: 3, src: "/float-chocolate1.png", name: "Dark Chocolate", packX: 20, packY: -50, x: 650, y: -450, rotate: 720, scale: 1, delay: 0.15 },
+  { id: 4, src: "/float-chocolate2.png", name: "Milk Chocolate", packX: 0, packY: -40, x: -750, y: -50, rotate: 720, scale: 1, delay: 0.25 },
+  { id: 5, src: "/float-mushroom2.png", name: "Wild Shroom", packX: 70, packY: -25, x: -600, y: 400, rotate: 720, scale: 1, delay: 0.35 },
+  { id: 6, src: "/brown-strips.png", name: "Candy Strips", packX: 10, packY: 0, x: 50, y: -700, rotate: 720, scale: 1, delay: 0.3 },
+  { id: 7, src: "/brown-strips.png", name: "Sweet Strips", packX: 30, packY: 60, x: 600, y: 450, rotate: 720, scale: 1, delay: 0.4 },
+  { id: 8, src: "/brown-strips.png", name: "Caramel Strips", packX: -30, packY: 55, x: -150, y: 650, rotate: 720, scale: 1, delay: 0.45 },
 ];
 
 export default function MushroomSection() {
@@ -78,7 +78,7 @@ export default function MushroomSection() {
 
         <motion.div
           style={{ opacity: textOpacity, scale: textScale, filter: textBlur }}
-          className="absolute bottom-10 text-center pointer-events-none z-30"
+          className="absolute bottom-14 text-center pointer-events-none z-30"
         >
           <h2>UNBOX YOUR FOCUS</h2>
         </motion.div>

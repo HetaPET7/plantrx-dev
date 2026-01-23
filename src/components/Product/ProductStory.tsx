@@ -6,8 +6,6 @@ import Image from 'next/image'
 import { useRef, useMemo, useEffect, useState } from 'react'
 import { containerBlurVars, itemBlurLeftVars, itemBlurRightVars } from '@/animations/framerMotionVariants';
 
-
-
 const title = 'Focus That Fits Your Day'
 const lines = ['Clean energy and clarity in a simple daily strip.']
 
@@ -35,7 +33,6 @@ const imageData = [
     },
 ]
 
-
 function useIsDesktop() {
     const [isDesktop, setIsDesktop] = useState(false)
 
@@ -59,10 +56,19 @@ export default function ProductStory() {
     })
 
     const characters = useMemo(() => {
-        return title.split('').map((char) => {
+        return title.split('').map((char, i) => {
             const start = Math.random() * 0.15
             const end = start + 0.15
-            return { char, start, end }
+            
+            // "Focus" positions 0-4 (F-o-c-u-s)
+            const isFocusChar = i >= 0 && i <= 4
+            // "Day" positions 22-24 (D-a-y)
+            const isDayChar = i >= 15 && i <= 26
+            
+            const className = isFocusChar ? 'green' : 
+                             isDayChar ? 'orange' : ''
+                             
+            return { char, start, end, className }
         })
     }, [])
 
@@ -75,19 +81,19 @@ export default function ProductStory() {
         ]
     )
 
-
     return (
         <section className='product-story-section relative'>
             <div ref={sectionRef} className="relative lg:h-[800vh] h-auto max-lg:pt-50 max-lg:pb-60 max-sm:pt-10 max-sm:pb-40">
                 <div className="text-image sticky top-0 lg:h-screen w-full lg:overflow-hidden">
                     <div className='container flex flex-col items-center justify-center h-full'>
-                        <h2 className="font-body flex flex-wrap justify-center z-10">
+                        <h2 className="font-body lg:text-7xl! lg:leading-23! xl:text-8xl! xl:leading-25! md:text-6xl! md:leading-17! font-bold text-center xl:max-w-3xl max-w-xl">
                             {isDesktop ? (
                                 <span className="flex flex-wrap justify-center">
                                     {characters.map((item, i) => (
                                         <Character
                                             key={i}
                                             char={item.char}
+                                            className={item.className}
                                             progress={scrollYProgress}
                                             range={[item.start, item.end]}
                                         />
@@ -95,7 +101,7 @@ export default function ProductStory() {
                                 </span>
                             ) : (
                                 <RevealText tag="h2" className="text-2xl leading-normal">
-                                    Focus That Fits Your Day
+                                    <span className="focus-green">Focus</span> That Fits Your <span className="day-orange">Day</span>
                                 </RevealText>
                             )}
                         </h2>
@@ -115,55 +121,43 @@ export default function ProductStory() {
                                 </RevealText>
                             )}
                         </div>
-
                     </div>
 
-                    {/* <div className="max-lg:hidden"> */}
-                        {imageData.map((img, i) => (
-                            <StoryImage
-                                key={i}
-                                src={img.src}
-                                progress={scrollYProgress}
-                                range={img.range as [number, number, number, number]}
-                                side={img.side as 'left' | 'right'}
-                                align={img.align}
-                                targetTop={img.targetTop}
-                            />
-                        ))}
-                    {/* </div> */}
-                    {/* <div className="lg:hidden">
-                        {imageData.map((img, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: i * 0.2 }}
-                                viewport={{ once: true, amount: 0.3 }}
-                                className="mobile-img text-with-img"
-                            >
-                                <Image
-                                    src={img.src}
-                                    alt="Product Story"
-                                    width={1080}
-                                    height={1080}
-                                    className="w-full h-auto object-contain drop-shadow-2xl"
-                                />
-                            </motion.div>
-                        ))}
-                    </div> */}
+                    {imageData.map((img, i) => (
+                        <StoryImage
+                            key={i}
+                            src={img.src}
+                            progress={scrollYProgress}
+                            range={img.range as [number, number, number, number]}
+                            side={img.side as 'left' | 'right'}
+                            align={img.align}
+                            targetTop={img.targetTop}
+                        />
+                    ))}
                 </div>
             </div>
         </section>
     )
 }
 
-function Character({ char, progress, range }: { char: string, progress: MotionValue<number>, range: [number, number] }) {
+function Character({ 
+    char, 
+    className = '', 
+    progress, 
+    range 
+}: { 
+    char: string, 
+    className?: string, 
+    progress: MotionValue<number>, 
+    range: [number, number] 
+}) {
     const blur = useTransform(progress, range, [20, 0]);
     const opacity = useTransform(progress, range, [0, 1]);
     const y = useTransform(progress, range, [20, 0]);
 
     return (
         <motion.span
+            className={className}
             style={{
                 filter: useTransform(blur, (v) => `blur(${v}px)`),
                 opacity,
@@ -202,6 +196,7 @@ function StoryImage({ src, progress, range, side, align, targetTop }: {
         side === 'left' ? -10 : 10,
         side === 'left' ? 60 : -60
     ]);
+    
     return (
         <motion.div
             style={{

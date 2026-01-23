@@ -52,16 +52,16 @@ export default function Home() {
         </div>
       </motion.div>
       <Header />
-      <div className="fixed bottom-0 inset-x-0 z-9999999 px-5 pt-2 pb-1 bg-green/70 backdrop-blur-md">
+      <div className="fixed bottom-3 inset-x-0 z-9999999 cursor-pointer font-playfair text-black items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-transform duration-300 ease-out hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 sm:[&_svg]:size-5 [&_svg]:shrink-0 bg-linear-to-br from-yellow-400 via-yellow-500 to-yellow-600 h-9 px-3 py-1.5 sm:h-10 sm:px-7 sm:py-6 sm:text-xl luxury-button-primary flex text-sm w-max left-1/2 -translate-x-1/2">
         <Link
           href="#"
-          className="relative flex items-center justify-center gap-5 text-center"
+          className="relative flex items-center justify-center gap-3 text-center"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shopping-cart lg:w-10 lg:h-10 sm:w-8 sm:h-8 w-7 h-7 text-white" aria-hidden="true"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shopping-cart lg:w-6! lg:h-6! w-8 h-8 text-black" aria-hidden="true"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
 
-          <h3 className="tracking-[2px]! uppercase font-bold font-heading text-white">
+          <h4 className="tracking-[2px]! capitalize font-bold font-playfair text-black">
             Add To Cart
-          </h3>
+          </h4>
         </Link>
       </div>
       <div className="relative z-9 bg-cream">

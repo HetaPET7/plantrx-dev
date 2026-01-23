@@ -100,7 +100,7 @@ function ProductBenefits() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ amount: 0.4 }}
-                    className='flex max-lg:flex-col xl:h-screen h-auto  items-center lg:justify-between justify-start lg:gap-5 gap-12 max-lg:mb-25'>
+                    className='flex max-lg:flex-col h-auto items-center lg:justify-between justify-start lg:gap-5 gap-12 max-lg:mb-25 mb-35'>
                         <motion.div 
                         variants={itemBlurLeftVars as any}
                         className='pro-bx-content lg:max-w-[50%] xl:max-w-[40%] max-w-full w-full'>
@@ -118,7 +118,7 @@ function ProductBenefits() {
                                     </svg>
 
                                 </div>
-                                <h2 className='font-semibold'>Cognitive Support from Lion’s Mane</h2>
+                                <h2 className='font-semibold lg:max-w-xl'>Cognitive from <span className='green'>Lion’s Mane</span></h2>
                                 <div className='content pt-[20px]'>
                                     <p>Hericium erinaceus (Lion’s Mane) has been used to support focus and cognitive wellness in everyday life.</p>
                                 </div>
@@ -134,7 +134,7 @@ function ProductBenefits() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ amount: 0.4 }}
-                    className='flex max-lg:flex-col lg:h-screen h-auto items-center lg:justify-between justify-start lg:gap-5 gap-12 max-lg:mb-25 flex-row-reverse'>
+                    className='flex max-lg:flex-col h-auto items-center lg:justify-between justify-start lg:gap-5 gap-12 max-lg:mb-25 mb-35 flex-row-reverse'>
                         <motion.div 
                         variants={itemBlurRightVars as any}
                         className='pro-bx-content lg:max-w-[50%] xl:max-w-[40%] max-w-full w-full'>
@@ -145,7 +145,7 @@ function ProductBenefits() {
 
 
                             </div>
-                            <h2 className='font-semibold'>Stamina-Promoting Cordyceps</h2>
+                            <h2 className='font-semibold lg:max-w-xl'>Stamina-Promoting <span className='green'>Cordyceps</span></h2>
                             <div className='content pt-[20px]'>
                                 <p>Cordyceps sinensis is valued for its ability to help support normal energy metabolism and stamina.</p>
                             </div>
@@ -160,7 +160,7 @@ function ProductBenefits() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ amount: 0.4 }}
-                    className='flex max-lg:flex-col lg:h-screen h-auto items-center lg:justify-between justify-start lg:gap-5 gap-12 max-lg:mb-25'>
+                    className='flex max-lg:flex-col h-auto items-center lg:justify-between justify-start lg:gap-5 gap-12 max-lg:mb-25 mb-35'>
                         <motion.div 
                         variants={itemBlurLeftVars as any}
                         className='pro-bx-content lg:max-w-[50%] xl:max-w-[40%] max-w-full w-full'>
@@ -171,7 +171,7 @@ function ProductBenefits() {
 
 
                             </div>
-                            <h2 className='font-semibold'>Maitake & Shiitake’s Wellness Boost</h2>
+                            <h2 className='font-semibold lg:max-w-xl'>Maitake & Shiitake’s <span className='green'>Wellness Boost</span></h2>
                             <div className='content pt-[20px]'>
                                 <p>Grifola frondosa (Maitake) and Lentinus edodes (Shiitake) contribute natural compounds that help promote immune balance and antioxidant support.</p>
                             </div>
@@ -186,7 +186,7 @@ function ProductBenefits() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ amount: 0.4 }}
-                    className='flex max-lg:flex-col lg:h-screen h-auto  items-center lg:justify-between justify-start lg:gap-5 gap-12 max-lg:mb-25 flex-row-reverse'>
+                    className='flex max-lg:flex-col h-auto items-center lg:justify-between justify-start lg:gap-5 gap-12 max-lg:mb-25 flex-row-reverse'>
                         <motion.div 
                         variants={itemBlurRightVars as any}
                         className='pro-bx-content lg:max-w-[50%] xl:max-w-[40%] w-full'>
@@ -202,7 +202,7 @@ function ProductBenefits() {
 
                             </div>
 
-                            <h2 className='font-semibold'>Chocolate Flavor, Zero Fuss</h2>
+                            <h2 className='font-semibold lg:max-w-sm'>Chocolate Flavor, <span className='green'>Zero Fuss</span></h2>
                             <div className='content pt-[20px]'>
                                 <p>These quick-dissolving strips deliver traditional mushroom benefits with no capsules needed — and in a rich, chocolatey flavor.</p>
                             </div>
