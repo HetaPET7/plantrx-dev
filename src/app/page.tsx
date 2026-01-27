@@ -79,13 +79,7 @@ export default function Home() {
       >
         <Link
           href="#"
-          className="luxury-button-primary flex items-center justify-center gap-3
-            font-playfair font-bold tracking-[2px]
-            bg-linear-to-br from-yellow-400 via-yellow-500 to-yellow-600
-            text-black
-            h-10 sm:h-11 px-6 sm:px-8 rounded-md
-            shadow-lg hover:opacity-90 transition"
-        >
+          className="luxury-button-primary flex items-center justify-center gap-3 font-playfair font-bold tracking-[2px] bg-linear-to-br from-yellow-400 via-yellow-500 to-yellow-600 text-black h-10 sm:h-11 px-6 sm:px-8 rounded-md shadow-lg hover:opacity-90 transition">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

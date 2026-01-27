@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 import Image from 'next/image'
 import { useRef, useMemo, useEffect, useState } from 'react'
 import { containerBlurVars, itemBlurLeftVars, itemBlurRightVars } from '@/animations/framerMotionVariants';
+import { useIsTablet } from '@/hooks/useIsTablet'
 
 const title = 'Focus That Fits Your Day'
 const lines = ['Clean energy and clarity in a simple daily strip.']
@@ -33,23 +34,10 @@ const imageData = [
     },
 ]
 
-function useIsDesktop() {
-    const [isDesktop, setIsDesktop] = useState(false)
-
-    useEffect(() => {
-        const check = () => setIsDesktop(window.innerWidth >= 1024)
-        check()
-        window.addEventListener('resize', check)
-        return () => window.removeEventListener('resize', check)
-    }, [])
-
-    return isDesktop
-}
 
 export default function ProductStory() {
     const sectionRef = useRef<HTMLDivElement>(null)
-    const isDesktop = useIsDesktop()
-
+    const isDesktop = useIsTablet(1280);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ['start start', 'end end'],
@@ -85,24 +73,24 @@ export default function ProductStory() {
         <section className='product-story-section relative'>
             <div ref={sectionRef} className="relative lg:h-[800vh] h-auto max-lg:pt-50 max-lg:pb-60 max-sm:pt-10 max-sm:pb-40">
                 <div className="text-image sticky top-0 lg:h-screen w-full lg:overflow-hidden">
-                    <div className='container flex flex-col items-center justify-center h-full'>
-                        <h2 className="font-body lg:text-7xl! lg:leading-23! xl:text-8xl! xl:leading-25! md:text-6xl! md:leading-17! font-bold text-center xl:max-w-3xl max-w-xl">
-                            {isDesktop ? (
+                    <div className='container flex flex-col items-center justify-center h-full '>
+                        <h2 className="font-body xl:text-8xl! xl:leading-25! lg:text-6xl! lg:leading-23! md:text-5xl! md:leading-17! font-bold text-center md:max-w-3xl max-w-xl max-xl:mb-2">
+                            {!isDesktop ? ( 
                                 <span className="flex flex-wrap justify-center">
                                     {characters.map((item, i) => (
                                         <Character
-                                            key={i}
+                                            key={i} 
                                             char={item.char}
                                             className={item.className}
                                             progress={scrollYProgress}
                                             range={[item.start, item.end]}
                                         />
-                                    ))}
+                                    ))} 
                                 </span>
                             ) : (
-                                <RevealText tag="h2" className="text-2xl leading-normal">
-                                    <span className="focus-green">Focus</span> That Fits Your <span className="day-orange">Day</span>
-                                </RevealText>
+                                <span>
+                                    <span className="text-green">Focus</span> That Fits <span className="text-secondary">Your Day</span>
+                                </span>
                             )}
                         </h2>
 
